@@ -1,0 +1,14 @@
+.main {
+    display: flex;                      /* Use flexbox for layout */
+    flex-direction: column;            /* Stack children vertically */
+    align-items: center;               /* Center items horizontally */
+    justify-content: center;           /* Center items vertically */
+    min-height: 100vh;                 /* Full viewport height */
+    text-align: center;                /* Center text */
+    padding: 20px;                     /* Optional padding */
+  }
+  
+  .main h1 {
+    color: #333; /* This is more specific */
+    font-size: 2rem;
+  }
