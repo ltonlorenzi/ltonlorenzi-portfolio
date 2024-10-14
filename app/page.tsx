@@ -15,7 +15,6 @@ export default function Home() {
         <div className="text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <div className="mb-2">LTONLORENZI PORTFOLIO</div>
           <div>Coming soon...</div>
-          <div>Really soon...</div>
         </div>
       </main>
     </div>
