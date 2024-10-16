@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default Light Theme Styles */
+body {
+  @apply text-foreground bg-background font-sans;
+}
+
+/* Dark Theme Styles when dark class is applied to html */
+html.dark body {
+  @apply text-dark-foreground bg-dark-background;
+}
+
+/* Additional Utility Classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
