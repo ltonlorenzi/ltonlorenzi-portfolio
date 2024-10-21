@@ -1,3 +1,3 @@
-export default async function HomePage() {
-  return <div>home page </div>;
+export default async function HeroPage() {
+  return <div className="p-6">HeroPage</div>;
 }

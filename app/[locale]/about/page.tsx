@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold">About Me</h1>
+      <h1>About Me</h1>
       <p className="mt-4">
         Hello! I’m Luciano Tonlorenzi, a web developer based in Argentina. I
         specialize in building dynamic and responsive web applications using the

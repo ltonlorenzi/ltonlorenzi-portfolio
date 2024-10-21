@@ -17,4 +17,18 @@ html.dark body {
   .text-balance {
     text-wrap: balance;
   }
+  .bg-custom {
+    min-height: 100vh;
+    background-image: url('/images/background-default.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .dark .bg-custom {
+    background-image: url('/images/background-dark.jpg');
+  }
+}
+
+h1 {
+  @apply text-3xl font-semibold;
 }

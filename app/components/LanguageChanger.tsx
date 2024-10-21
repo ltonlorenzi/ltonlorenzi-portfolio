@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import i18nConfig from "@/i18nConfig";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
-import { useTranslation } from "react-i18next";
+import i18nConfig from '@/i18nConfig';
+import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 
 export default function LanguageChanger() {
   const { i18n } = useTranslation();
@@ -11,8 +11,8 @@ export default function LanguageChanger() {
   const router = useRouter();
   const currentPathname = usePathname();
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLocale = e.target.value;
+  const handleChange = () => {
+    const newLocale = currentLocale === 'en' ? 'es' : 'en';
 
     // set cookie for next-i18n-router
     const days = 30;
@@ -26,20 +26,15 @@ export default function LanguageChanger() {
       currentLocale === i18nConfig.defaultLocale &&
       !i18nConfig.prefixDefault
     ) {
-      router.push("/" + newLocale + currentPathname);
+      router.push('/' + newLocale + currentPathname);
     } else {
       router.push(
-        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`),
+        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
       );
     }
 
     router.refresh();
   };
 
-  return (
-    <select onChange={handleChange} value={currentLocale}>
-      <option value="en">English</option>
-      <option value="es">Español</option>
-    </select>
-  );
+  return <button onClick={handleChange}>{currentLocale}</button>;
 }

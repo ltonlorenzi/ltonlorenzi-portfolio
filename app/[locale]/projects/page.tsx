@@ -1,13 +1,21 @@
-import initTranslations from "@/app/i18n";
+import Projects from '@/app/components/Projects';
+import initTranslations from '@/app/i18n';
 
-interface ProjectsProps {
+interface ProjectsPageProps {
   params: {
     locale: string;
   };
 }
 
-export default async function Projects({ params: { locale } }: ProjectsProps) {
-  const { t } = await initTranslations(locale, ["projects"]);
+export default async function ProjectsPage({
+  params: { locale },
+}: ProjectsPageProps) {
+  const { t } = await initTranslations(locale, ['projects']);
 
-  return <div>{t("title")}</div>;
+  return (
+    <div>
+      <h1>{t('title')}</h1>
+      <Projects locale={locale} />
+    </div>
+  );
 }
