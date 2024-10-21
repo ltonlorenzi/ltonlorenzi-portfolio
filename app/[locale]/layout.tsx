@@ -1,6 +1,6 @@
+import ReactQueryProvider from '@/context/ReactQueryProvider';
 import ThemeProvider from '@/context/ThemeProvider';
 import TranslationsProvider from '@/context/TranslationsProvider';
-import ReactQueryProvider from '@/utils/ReactQueryProvider';
 import type { Metadata } from 'next';
 import './globals.css';
 import { Fira_Code } from 'next/font/google';
@@ -31,10 +31,12 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="preload" href="/images/background-default.jpg" as="image" />
+        <link rel="preload" href="/images/background-dark.jpg" as="image" />
       </head>
       <body className={`${firaCode.className} bg-custom`}>
         <ReactQueryProvider>
-          <main className="min-h-screen transition-colors duration-300 p-12 content">
+          <main className="min-h-screen p-12">
             <ThemeProvider>
               <TranslationsProvider
                 locale={locale}

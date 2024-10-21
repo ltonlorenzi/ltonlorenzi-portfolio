@@ -14,26 +14,24 @@ export default function LanguageChanger() {
   const handleChange = () => {
     const newLocale = currentLocale === 'en' ? 'es' : 'en';
 
-    // set cookie for next-i18n-router
+    // Set cookie for next-i18n-router
     const days = 30;
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     const expires = date.toUTCString();
     document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
-    // redirect to the new locale path
+    // Use replace to avoid pushing a new entry in the history stack
     if (
       currentLocale === i18nConfig.defaultLocale &&
       !i18nConfig.prefixDefault
     ) {
-      router.push('/' + newLocale + currentPathname);
+      router.replace('/' + newLocale + currentPathname);
     } else {
-      router.push(
+      router.replace(
         currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
       );
     }
-
-    router.refresh();
   };
 
   return <button onClick={handleChange}>{currentLocale}</button>;

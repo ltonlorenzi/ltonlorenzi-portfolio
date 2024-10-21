@@ -23,17 +23,16 @@ export default function Projects({ locale }: ProjectsProps) {
     data: projects,
     isLoading,
     isError,
+    error,
   } = useQuery({
     queryKey: ['projects', locale], // Locale is part of the query key
     queryFn: () => fetchProjects(locale),
-
-    // Caching and freshness settings
     staleTime: 1000 * 60 * 30, // Data is considered fresh for 30 minutes
     refetchOnWindowFocus: false, // Disable refetching on window focus
   });
 
   if (isLoading) return <Spinner />;
-  if (isError) return <p>Error loading projects</p>;
+  if (isError) return <p>Error loading projects: {error.message}</p>;
 
   return (
     <div className="p-6">
