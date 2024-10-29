@@ -20,6 +20,7 @@ ABOUT:
 MONGODB:
 
 1. subir todo el texto a mongoDB
+2. ver por que no funciona en vercel
 
 MOBILE:
 
@@ -30,6 +31,7 @@ EXTRA:
 1. ver si se puede agregar a un contexto el locale, o sacar de translation de alguna manera para no pasarlo siempre por props
 2. armar bien el CV en PDF en ingles y espaniol
 3. crear componente BUTTON
+4. agregar spinner/skeleton
 
 CONTACT
 
