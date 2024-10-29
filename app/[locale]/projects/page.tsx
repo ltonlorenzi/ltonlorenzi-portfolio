@@ -1,12 +1,11 @@
-import Projects from '@/app/components/Projects';
-import initTranslations from '@/app/i18n';
+import { Projects as ProjectsComponent } from '@/app/components/Projects';
 import {
   dehydrate,
   HydrationBoundary,
   QueryClient,
 } from '@tanstack/react-query';
 
-interface ProjectsPageProps {
+interface ProjectsProps {
   params: {
     locale: string;
   };
@@ -22,11 +21,7 @@ const fetchProjects = async (locale: string) => {
   return res.json();
 };
 
-export default async function ProjectsPage({
-  params: { locale },
-}: ProjectsPageProps) {
-  const { t } = await initTranslations(locale, ['projects']);
-
+export default async function Projects({ params: { locale } }: ProjectsProps) {
   //se llama a la query desde el servidor, se cachea en el state la data de queryClient transformandola con dehydrate
   //dentro de este boundary, los client components pueden usar esta data cacheada, sin llamar a la api de nuevo
   const queryClient = new QueryClient();
@@ -36,11 +31,10 @@ export default async function ProjectsPage({
   });
 
   return (
-    <div className="p-12">
-      <h1>{t('title')}</h1>
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <Projects locale={locale} />
-      </HydrationBoundary>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <div className="flex items-center h-full">
+        <ProjectsComponent locale={locale} />
+      </div>
+    </HydrationBoundary>
   );
 }

@@ -17,10 +17,10 @@ export default function ThemeToggle() {
   if (!mounted) return null;
 
   return (
-    <div className="items-center fixed bottom-8 right-8 z-50">
+    <div className="fixed bottom-3 right-3">
       <button
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-        className="flex items-center p-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors duration-300"
+        className="flex items-center p-2 rounded-full transition-colors duration-300"
         aria-label="Toggle theme"
       >
         {theme === 'light' ? (

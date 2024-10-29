@@ -34,5 +34,5 @@ export default function LanguageChanger() {
     }
   };
 
-  return <button onClick={handleChange}>{currentLocale}</button>;
+  return <button onClick={handleChange}>ES/EN</button>;
 }

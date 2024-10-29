@@ -1,6 +1,9 @@
 {
   "welcome": "My portfolio",
-  "about": "About Me",
-  "projects": "Projects",
-  "contact": "Contact Me"
+  "headers": {
+    "home": "Home",
+    "about": "About Me",
+    "projects": "Projects",
+    "contact": "Contact Me"
+  }
 }

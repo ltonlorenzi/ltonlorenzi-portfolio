@@ -6,7 +6,8 @@ import './globals.css';
 import { Fira_Code } from 'next/font/google';
 import { ReactNode } from 'react';
 
-import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
 import initTranslations from '../i18n';
 
 const firaCode = Fira_Code({ subsets: ['latin'] });
@@ -31,24 +32,24 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="preload" href="/images/background-default.jpg" as="image" />
-        <link rel="preload" href="/images/background-dark.jpg" as="image" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${firaCode.className} bg-custom`}>
-        <ReactQueryProvider>
-          <main className="min-h-screen p-12">
+        <main className="min-h-screen">
+          <ReactQueryProvider>
             <ThemeProvider>
               <TranslationsProvider
                 locale={locale}
                 resources={resources}
                 namespaces={i18nNamespaces}
               >
-                <Navbar locale={locale} />
+                <Header locale={locale} />
                 {children}
+                <Footer />
               </TranslationsProvider>
             </ThemeProvider>
-          </main>
-        </ReactQueryProvider>
+          </ReactQueryProvider>
+        </main>
       </body>
     </html>
   );

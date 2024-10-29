@@ -18,7 +18,7 @@ const fetchProjects = async (locale: string) => {
   return res.json();
 };
 
-export default function Projects({ locale }: ProjectsProps) {
+export function Projects({ locale }: ProjectsProps) {
   const {
     data: projects,
     isLoading,
