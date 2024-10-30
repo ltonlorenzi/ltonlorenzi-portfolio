@@ -2,9 +2,8 @@
 
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-
-import { MoonIcon } from './icons/Moon'; // Import your Moon icon
-import { SunIcon } from './icons/Sun'; // Import your Sun icon
+import { IoMdMoon } from 'react-icons/io';
+import { MdWbSunny } from 'react-icons/md';
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -24,9 +23,9 @@ export default function ThemeToggle() {
         aria-label="Toggle theme"
       >
         {theme === 'light' ? (
-          <MoonIcon className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+          <IoMdMoon className="w-6 h-6 text-gray-800 dark:text-gray-200" />
         ) : (
-          <SunIcon className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+          <MdWbSunny className="w-6 h-6 text-gray-800 dark:text-gray-200" />
         )}
       </button>
     </div>

@@ -36,5 +36,13 @@ html.dark body {
 }
 
 h1 {
-  @apply text-5xl font-semibold;
+  @apply md:text-5xl text-4xl font-semibold;
+}
+
+h2 {
+  @apply md:text-3xl text-2xl font-semibold;
+}
+
+h3 {
+  @apply md:text-xl text-lg font-semibold;
 }

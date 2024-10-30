@@ -34,5 +34,12 @@ export default function LanguageChanger() {
     }
   };
 
-  return <button onClick={handleChange}>ES/EN</button>;
+  return (
+    <button
+      onClick={handleChange}
+      className="transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 uppercase"
+    >
+      {currentLocale}
+    </button>
+  );
 }

@@ -1,6 +1,6 @@
 export default function Contact() {
   return (
-    <div className="flex items-center h-full">
+    <div>
       <div>
         <h1>Contact Me</h1>
         <p>

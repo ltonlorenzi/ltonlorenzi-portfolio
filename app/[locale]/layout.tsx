@@ -1,3 +1,4 @@
+import { LocaleProvider } from '@/context/LocaleContext';
 import ReactQueryProvider from '@/context/ReactQueryProvider';
 import ThemeProvider from '@/context/ThemeProvider';
 import TranslationsProvider from '@/context/TranslationsProvider';
@@ -28,6 +29,7 @@ export default async function RootLayout({
   //Con este metodo solo puedo hacer server side translations. Para hacer las client-side tengo que definir el translations provider
   //Translations provider: provide translations to all of the nested components
   const { resources } = await initTranslations(locale, i18nNamespaces);
+
   return (
     <html lang="en">
       <head>
@@ -35,21 +37,22 @@ export default async function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${firaCode.className} bg-custom`}>
-        <main className="min-h-screen">
-          <ReactQueryProvider>
-            <ThemeProvider>
+        <ReactQueryProvider>
+          <ThemeProvider>
+            <LocaleProvider locale={locale}>
               <TranslationsProvider
-                locale={locale}
                 resources={resources}
                 namespaces={i18nNamespaces}
               >
-                <Header locale={locale} />
-                {children}
-                <Footer />
+                <div className="flex flex-col min-h-screen">
+                  <Header />
+                  <main className="flex-grow flex">{children}</main>
+                  <Footer />
+                </div>
               </TranslationsProvider>
-            </ThemeProvider>
-          </ReactQueryProvider>
-        </main>
+            </LocaleProvider>
+          </ThemeProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

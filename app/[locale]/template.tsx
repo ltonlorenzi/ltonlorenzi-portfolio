@@ -25,7 +25,7 @@ const Template = ({ children }: TemplateProps) => {
 
   return (
     <div
-      className={`transition-opacity duration-200 transform flex-grow p-12 ${
+      className={`transition-opacity duration-200 transform flex flex-grow p-12 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
     >

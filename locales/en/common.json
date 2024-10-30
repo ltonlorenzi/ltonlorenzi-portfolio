@@ -1,9 +1,10 @@
 {
   "welcome": "My portfolio",
   "headers": {
-    "home": "Home",
+    "": "Home",
     "about": "About Me",
     "projects": "Projects",
+    "career": "Career",
     "contact": "Contact Me"
   }
 }

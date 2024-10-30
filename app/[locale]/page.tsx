@@ -1,27 +1,34 @@
 import Image from 'next/image';
 
+import { HomeTitle } from '../components/HomeTitle';
+import SocialIcons from '../components/SocialIcons';
+
 export default function Home() {
   return (
-    <div className="flex justify-center items-center gap-12 md:flex-row flex-col">
-      <div className="max-w-xl flex flex-col gap-4">
-        <h1>Full-Stack Developer</h1>
-
+    <div className="flex justify-center items-center gap-12 md:flex-row flex-col w-full h-full md:h-4/5">
+      <div className="max-w-xl flex flex-col gap-8 text-justify">
+        <HomeTitle />
         <div>
-          I am a Front-End / Full-Stack Developer. I am currently as a freelance
-          Full-Stack Developer
+          I’m Luciano Tonlorenzi, a Front-End / Full-Stack Developer focused on
+          creating dynamic, responsive web applications.
         </div>
 
-        <a href="/cv.pdf" download="Luciano_Tonlorenzi_CV.pdf">
-          Download CV
-        </a>
+        <div className="flex gap-8 items-center">
+          <SocialIcons />
+          <a
+            href="/cv.pdf"
+            download="Luciano_Tonlorenzi_CV.pdf"
+            className="border border-foreground dark:border-dark-foreground rounded-xl py-1 px-3 transition-all duration-300 transform hover:bg-foreground hover:text-white dark:hover:bg-dark-foreground dark:hover:text-dark-background"
+          >
+            Download CV
+          </a>
+        </div>
       </div>
       <Image
         src="/images/profile.svg"
         alt="Profile image"
         width={500}
         height={500}
-        style={{ maxWidth: '500px', maxHeight: '500px' }}
-        layout="responsive"
         className="rounded-lg"
       />
     </div>

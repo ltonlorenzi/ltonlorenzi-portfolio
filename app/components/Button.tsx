@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface ButtonProps {
-  text: string;
+  children: ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Button = ({ text }: ButtonProps) => {
-  return <div className="p-8 rounded">{text}</div>;
+export const Button = ({ children, onClick }: ButtonProps) => {
+  return (
+    <button onClick={onClick} className="p-8 rounded">
+      {children}
+    </button>
+  );
 };

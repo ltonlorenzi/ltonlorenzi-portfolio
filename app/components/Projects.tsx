@@ -1,12 +1,9 @@
 'use client'; // Mark the component as a client component
 
 import Spinner from '@/app/components/Spinner';
+import { useLocale } from '@/context/LocaleContext';
 import { Project } from '@/types/Project';
 import { useQuery } from '@tanstack/react-query';
-
-interface ProjectsProps {
-  locale: string;
-}
 
 const fetchProjects = async (locale: string) => {
   const res = await fetch(
@@ -18,7 +15,9 @@ const fetchProjects = async (locale: string) => {
   return res.json();
 };
 
-export function Projects({ locale }: ProjectsProps) {
+export function Projects() {
+  const locale = useLocale();
+
   const {
     data: projects,
     isLoading,

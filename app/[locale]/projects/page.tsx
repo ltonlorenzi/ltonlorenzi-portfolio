@@ -32,8 +32,8 @@ export default async function Projects({ params: { locale } }: ProjectsProps) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <div className="flex items-center h-full">
-        <ProjectsComponent locale={locale} />
+      <div>
+        <ProjectsComponent />
       </div>
     </HydrationBoundary>
   );

@@ -1,9 +1,10 @@
 {
   "welcome": "Bienvenido a mi portafolio",
   "headers": {
-    "home": "Inicio",
+    "": "Inicio",
     "about": "Sobre mí",
     "projects": "Proyectos",
+    "career": "Carrera",
     "contact": "Contáctame"
   }
 }
