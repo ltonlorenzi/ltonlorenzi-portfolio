@@ -1,6 +1,6 @@
 'use client';
 
-import initTranslations from '@/app/i18n';
+import initTranslations from '@/app/(public)/i18n';
 import { createInstance, Resource } from 'i18next';
 import { ReactNode } from 'react';
 import { I18nextProvider } from 'react-i18next';

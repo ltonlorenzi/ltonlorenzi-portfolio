@@ -8,7 +8,7 @@ html {
 
 /* Default Light Theme Styles */
 body {
-  @apply text-foreground bg-background font-sans transition-colors duration-300; /* Add transition for background and text color */
+  @apply text-foreground bg-background font-sans transition-colors duration-300 text-base; /* Add transition for background and text color */
 }
 
 /* Dark Theme Styles when dark class is applied to html */

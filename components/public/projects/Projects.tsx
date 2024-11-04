@@ -1,19 +1,10 @@
 'use client'; // Mark the component as a client component
 
-import Spinner from '@/app/components/Spinner';
+import Spinner from '@/components/public/common/Spinner';
 import { useLocale } from '@/context/LocaleContext';
+import { fetchProjects } from '@/queries/projects';
 import { Project } from '@/types/Project';
 import { useQuery } from '@tanstack/react-query';
-
-const fetchProjects = async (locale: string) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/projects?locale=${locale}`
-  );
-  if (!res.ok) {
-    throw new Error('Failed to fetch projects');
-  }
-  return res.json();
-};
 
 export function Projects() {
   const locale = useLocale();

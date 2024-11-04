@@ -13,6 +13,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.59.15",
     "@tanstack/react-query-devtools": "^5.59.15",
+    "@tanstack/react-table": "^8.20.5",
     "framer-motion": "^11.11.10",
     "hamburger-react": "^2.5.1",
     "i18next": "^23.16.0",

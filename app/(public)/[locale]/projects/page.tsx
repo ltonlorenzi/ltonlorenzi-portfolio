@@ -1,4 +1,5 @@
-import { Projects as ProjectsComponent } from '@/app/components/Projects';
+import { Projects as ProjectsComponent } from '@/components/public/projects/Projects';
+import { fetchProjects } from '@/queries/projects';
 import {
   dehydrate,
   HydrationBoundary,
@@ -11,16 +12,6 @@ interface ProjectsProps {
   };
 }
 
-const fetchProjects = async (locale: string) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/projects?locale=${locale}`
-  );
-  if (!res.ok) {
-    throw new Error('Failed to fetch projects');
-  }
-  return res.json();
-};
-
 export default async function Projects({ params: { locale } }: ProjectsProps) {
   //se llama a la query desde el servidor, se cachea en el state la data de queryClient transformandola con dehydrate
   //dentro de este boundary, los client components pueden usar esta data cacheada, sin llamar a la api de nuevo
@@ -32,9 +23,7 @@ export default async function Projects({ params: { locale } }: ProjectsProps) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <div>
-        <ProjectsComponent />
-      </div>
+      <ProjectsComponent />
     </HydrationBoundary>
   );
 }
