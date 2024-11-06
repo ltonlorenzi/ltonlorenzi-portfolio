@@ -14,6 +14,8 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
   try {
     const locale = req.nextUrl.searchParams.get('locale');
+    const all = req.nextUrl.searchParams.get('all');
+
     const currentLocale = locale || defaultLocale;
 
     await connectMongoDB();

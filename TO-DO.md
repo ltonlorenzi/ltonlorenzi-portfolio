@@ -39,3 +39,6 @@ ADMIN
 1. Login
 2. Navbar
 3. crud de toda la pagina.
+
+
+fix translation for the public page
