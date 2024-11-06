@@ -1,7 +1,7 @@
-import { Technologies } from '@/types/Technologies';
+import { Technology } from '@/types/Technology';
 import { ColumnDef } from '@tanstack/react-table';
 
-export const technologiesColumns: ColumnDef<Technologies>[] = [
+export const technologiesColumns: ColumnDef<Technology>[] = [
   { header: 'ID', accessorKey: '_id', footer: '_id' },
   { header: 'Name', accessorKey: 'name', footer: 'name' },
   {

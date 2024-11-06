@@ -1,4 +1,4 @@
-import SocialIcons from '@/components/public/common/SocialIcons';
+import SocialIcons from '@/components/common/SocialIcons';
 import { HomeTitle } from '@/components/public/home/HomeTitle';
 import Image from 'next/image';
 

@@ -37,8 +37,8 @@ ESTILOS:
 ADMIN
 
 1. Login
-2. Navbar
-3. crud de toda la pagina.
-
+2. crud de toda la pagina.
 
 fix translation for the public page
+
+agregar algunos test. no muchos pero ALGO como para aprender

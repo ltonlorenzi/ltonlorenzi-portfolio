@@ -1,6 +1,6 @@
+import { Carousel } from '@/components/common/Carousel';
 import { AboutMe } from '@/components/public/about/AboutMe';
 import { Technologies } from '@/components/public/about/Technologies';
-import { Carousel } from '@/components/public/common/Carousel';
 
 export default function About() {
   return (

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const TranslationSchema = new mongoose.Schema({
   entityId: {
-    type: String,
+    type: Number,
     required: true,
   },
   entityName: {

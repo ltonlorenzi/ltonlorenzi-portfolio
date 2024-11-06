@@ -7,7 +7,7 @@ import {
 
 interface TableProps<TData> {
   data: TData[]; // Array of objects with generic row type
-  columns: ColumnDef<TData, any>[]; // Array of column definitions
+  columns: ColumnDef<TData>[]; // Array of column definitions
 }
 
 function Table<TData>({ data, columns }: TableProps<TData>) {

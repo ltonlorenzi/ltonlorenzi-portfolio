@@ -15,9 +15,7 @@ export default async function AdminLayout({
 }>) {
   return (
     <ReactQueryProvider>
-      <div className="flex flex-col min-h-screen">
-        <main className="flex-grow flex">{children}</main>
-      </div>
+      <main className="flex-col flex min-h-screen">{children}</main>
     </ReactQueryProvider>
   );
 }

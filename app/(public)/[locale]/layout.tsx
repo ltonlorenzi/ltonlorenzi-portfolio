@@ -1,6 +1,6 @@
 import initTranslations from '@/app/(public)/i18n';
-import { Footer } from '@/components/public/common/Footer';
-import { Header } from '@/components/public/common/Header';
+import { Footer } from '@/components/common/Footer';
+import { Header } from '@/components/common/Header';
 import { LocaleProvider } from '@/context/LocaleContext';
 import ReactQueryProvider from '@/context/ReactQueryProvider';
 import ThemeProvider from '@/context/ThemeProvider';

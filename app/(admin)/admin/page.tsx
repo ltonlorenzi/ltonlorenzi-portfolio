@@ -2,8 +2,8 @@
 import { About } from '@/components/admin/About';
 import { Career } from '@/components/admin/Career';
 import { Home } from '@/components/admin/Home';
-import { Projects } from '@/components/admin/Projects';
-import { Technologies } from '@/components/admin/Technologies';
+import { Technologies } from '@/components/admin/technologies/Technologies';
+import { Projects } from '@/components/public/projects/Projects';
 import { useState } from 'react';
 
 const MENU_OPTIONS = [
@@ -28,7 +28,7 @@ export default function Admin() {
     setIsSidebarOpen(false);
   };
   return (
-    <div className="bg-dark-background flex text-dark-foreground">
+    <div className="bg-dark-background flex flex-grow text-dark-foreground">
       {isSidebarOpen ? (
         <aside className="w-64 bg-gray-800 p-4">
           <nav>
@@ -52,7 +52,7 @@ export default function Admin() {
         </aside>
       ) : (
         <button
-          className="absolute top-8 left-8 bg-gray-700 text-white p-2 rounded-md"
+          className="absolute top-8 left-8 bg-gray-700 text-white p-2 rounded-md z-10"
           onClick={() => setIsSidebarOpen(true)}
         >
           ☰
