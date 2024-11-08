@@ -3,6 +3,7 @@
 import Spinner from '@/components/common/Spinner';
 import { useLocale } from '@/context/LocaleContext';
 import { fetchProjects } from '@/queries/projects';
+import { Project } from '@/types/Project';
 import { useQuery } from '@tanstack/react-query';
 
 export function Projects() {

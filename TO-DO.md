@@ -39,6 +39,12 @@ ADMIN
 1. Login
 2. crud de toda la pagina.
 
-fix translation for the public page
+GENERAL:
 
+fix translation for the public page
 agregar algunos test. no muchos pero ALGO como para aprender
+fix build
+add Option: OpenAI's GPT-4 AP to generate about description based on the user data
+
+USER:
+quiero que este proyecto se pueda vender y que los usuarios puedan cargar la data que quieran.

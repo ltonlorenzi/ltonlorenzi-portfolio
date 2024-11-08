@@ -6,7 +6,13 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 
-export default async function Projects(params: Promise<{ locale: string }>) {
+interface ProjectsProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function Projects({ params }: ProjectsProps) {
   const { locale } = await params;
   //se llama a la query desde el servidor, se cachea en el state la data de queryClient transformandola con dehydrate
   //dentro de este boundary, los client components pueden usar esta data cacheada, sin llamar a la api de nuevo

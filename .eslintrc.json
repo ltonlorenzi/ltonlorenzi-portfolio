@@ -8,7 +8,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended" // Ensures Prettier rules are respected
+    "plugin:prettier/recommended", // Ensures Prettier rules are respected
+    "next/core-web-vitals"
   ],
   "plugins": ["react", "@typescript-eslint", "prettier", "import"],
   "rules": {
