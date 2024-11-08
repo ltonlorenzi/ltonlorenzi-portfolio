@@ -7,6 +7,7 @@ import {
 
 interface TableProps<TData> {
   data: TData[]; // Array of objects with generic row type
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: ColumnDef<TData, any>[]; // Array of column definitions of type ColumnDef<TData>
 }
 
