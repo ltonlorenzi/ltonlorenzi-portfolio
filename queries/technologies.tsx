@@ -24,3 +24,22 @@ export const addTechnology = async (technology: Technology) => {
   }
   return res.json();
 };
+
+export const deleteTechnology = async (id: number) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/admin/technologies`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id }), // Wrapping the id in an object
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error(`Failed to delete the technology. Status: ${res.status}`);
+  }
+
+  return res.json();
+};

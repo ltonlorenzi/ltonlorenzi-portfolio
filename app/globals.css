@@ -6,33 +6,8 @@ html {
   @apply scroll-smooth;
 }
 
-/* Default Light Theme Styles */
 body {
-  @apply text-foreground bg-background font-sans transition-colors duration-300 text-base; /* Add transition for background and text color */
-}
-
-/* Dark Theme Styles when dark class is applied to html */
-html.dark body {
-  @apply text-dark-foreground bg-dark-background;
-}
-
-/* Additional Utility Classes */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .bg-custom {
-    min-height: 100vh;
-    background-color: white;
-    background-size: cover;
-    background-position: center;
-    transition: background-color 0.5s ease-in-out; /* Add transition */
-  }
-
-  .dark .bg-custom {
-    background-color: rgb(36, 36, 36);
-  }
+  @apply text-foreground dark:text-dark-foreground dark:bg-dark-background bg-background font-sans transition-colors duration-500 text-base; /* Add transition for background and text color */
 }
 
 h1 {

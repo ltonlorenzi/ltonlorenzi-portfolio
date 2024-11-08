@@ -19,3 +19,10 @@ export async function POST(req: NextRequest) {
   });
   return NextResponse.json({ message: 'Technology created', status: 201 });
 }
+
+export async function DELETE(req: NextRequest) {
+  const { id } = await req.json();
+  await connectMongoDB();
+  await Technologies.findByIdAndDelete(id);
+  return NextResponse.json({ message: 'Technology deleted', status: 201 });
+}

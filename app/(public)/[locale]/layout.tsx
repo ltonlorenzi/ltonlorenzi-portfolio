@@ -1,9 +1,8 @@
-import initTranslations from '@/app/(public)/i18n';
+import initTranslations from '@/app/i18n';
 import { Footer } from '@/components/common/Footer';
 import { Header } from '@/components/common/Header';
 import { LocaleProvider } from '@/context/LocaleContext';
 import ReactQueryProvider from '@/context/ReactQueryProvider';
-import ThemeProvider from '@/context/ThemeProvider';
 import TranslationsProvider from '@/context/TranslationsProvider';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
@@ -18,31 +17,27 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: Readonly<{
   children: ReactNode;
-  params: { locale: string; url: string };
+  params: Promise<{ locale: string }>;
 }>) {
   //Con este metodo solo puedo hacer server side translations. Para hacer las client-side tengo que definir el translations provider
   //Translations provider: provide translations to all of the nested components
+  const { locale } = await params;
   const { resources } = await initTranslations(locale, i18nNamespaces);
 
   return (
     <ReactQueryProvider>
-      <ThemeProvider>
-        <LocaleProvider locale={locale}>
-          <TranslationsProvider
-            resources={resources}
-            namespaces={i18nNamespaces}
-          >
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <main className="flex-grow flex">{children}</main>
-              <Footer />
-            </div>
-          </TranslationsProvider>
-        </LocaleProvider>
-      </ThemeProvider>
+      <LocaleProvider locale={locale}>
+        <TranslationsProvider resources={resources} namespaces={i18nNamespaces}>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow flex">{children}</main>
+            <Footer />
+          </div>
+        </TranslationsProvider>
+      </LocaleProvider>
     </ReactQueryProvider>
   );
 }

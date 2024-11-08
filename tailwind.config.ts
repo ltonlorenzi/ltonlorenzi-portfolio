@@ -9,13 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#ffffff', // Light background
-        foreground: '#171717', // Light text
-        primary: '#38B2AC', // Example accent color
+        //Light mode colors
+        background: '#ffffff',
+        foreground: '#171717',
+        primary: '#38B2AC',
         'button-bg': '#4A5568',
         'button-text': '#ffffff',
         // Dark mode colors
-        'dark-background': '#0a0a0a',
+        'dark-background': '#242424',
         'dark-foreground': '#ededed',
         'dark-primary': '#4FD1C5',
         'dark-button-bg': '#2D3748',

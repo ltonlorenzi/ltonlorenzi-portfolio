@@ -1,10 +1,10 @@
-'use client'; // Make sure this is a client component
+'use client';
 
 import { useRouter } from 'next/navigation';
 import { ReactNode, useEffect, useState } from 'react';
 
 interface TemplateProps {
-  children: ReactNode; // Define the type for children prop
+  children: ReactNode;
 }
 
 const Template = ({ children }: TemplateProps) => {

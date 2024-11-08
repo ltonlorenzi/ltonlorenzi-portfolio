@@ -1,3 +1,4 @@
+'use client';
 import { useLocale } from '@/context/LocaleContext';
 import { localizedLink } from '@/utils/linkHelper';
 import { routes } from '@/utils/routes';

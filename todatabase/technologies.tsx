@@ -1,14 +1,47 @@
 import { Technology } from '@/types/Technology';
-import { ColumnDef } from '@tanstack/react-table';
+import { createColumnHelper } from '@tanstack/react-table';
+const columnHelper = createColumnHelper<Technology>();
 
-export const technologiesColumns: ColumnDef<Technology>[] = [
-  { header: 'ID', accessorKey: '_id', footer: '_id' },
-  { header: 'Name', accessorKey: 'name', footer: 'name' },
-  {
-    header: 'Description',
-    accessorKey: 'description',
-    footer: 'description',
-  },
+export const technologiesColumns = [
+  columnHelper.accessor('_id', {
+    header: 'ID',
+  }),
+  columnHelper.accessor('name', {
+    header: 'Name',
+  }),
+  columnHelper.accessor('description', {
+    header: 'Name',
+  }),
+  columnHelper.display({
+    id: 'actions',
+    header: 'Actions',
+    cell: ({ row }) => {
+      const handleEdit = () => {
+        alert(`Edit ${row.original.name}`);
+      };
+
+      const handleDelete = () => {
+        alert(`Delete ${row.original.name}`);
+      };
+
+      return (
+        <div className="flex space-x-2">
+          <button
+            onClick={handleEdit}
+            className="bg-blue-500 px-4 py-2 rounded"
+          >
+            Edit
+          </button>
+          <button
+            onClick={handleDelete}
+            className="bg-red-500  px-4 py-2 rounded"
+          >
+            Delete
+          </button>
+        </div>
+      );
+    },
+  }),
 ];
 
 export const technologies = [

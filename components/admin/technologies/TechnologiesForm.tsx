@@ -30,7 +30,21 @@ const TechnologiesForm = ({ onClose }: TechnologiesForm) => {
     resolver: yupResolver(technologySchema),
   });
 
-  //why should I use this useCallback? how does this work?
+  /*useCallback and use memo do the same. The difference is that:
+    useCallback returns the function and useMemo returns the result of the function*/
+
+  /*useCallback: memorize a function so that it is not recreated on every render
+  If you don't memoize onSubmit, it will be re-created on every render of TechnologiesForm,
+  potentially causing unnecessary re-renders of Form or other child components that rely on 
+  the onSubmit function.
+  */
+
+  /*useMemo: memorize the result of a function if the parameters of it does not changes.
+  only use the useMemo to memorize functions results when the function to call is slow and we 
+  need to get better performance. 
+  -we also use useMemo to get the same objects reference through different renders if the object
+  does not change.
+  */
   const onSubmit = useCallback((formData: FormValues) => {
     // You can use the validated data to make your API request here
     try {

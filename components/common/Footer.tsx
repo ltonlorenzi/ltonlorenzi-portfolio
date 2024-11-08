@@ -1,12 +1,30 @@
-import React from 'react';
+'use client';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 import ThemeToggle from './ThemeToggle';
 
 export const Footer = () => {
+  const [clickCounter, setClickCouter] = useState(0);
+  const router = useRouter();
+
+  const handleClick = () => {
+    setTimeout(() => setClickCouter(0), 3000);
+
+    if (clickCounter < 2) setClickCouter(clickCounter + 1);
+    else {
+      setClickCouter(0);
+      router.push('/admin');
+    }
+  };
+
   return (
     <div className="p-6 w-full">
       <div className="text-xs text-center">
-        Made by Luciano Tonlorenzi &copy;
+        Made by Luciano Tonlorenzi
+        <span className="cursor-pointer" onClick={handleClick}>
+          &copy;
+        </span>
       </div>
       <ThemeToggle />
     </div>

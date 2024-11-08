@@ -26,9 +26,10 @@ export default function Home() {
       <Image
         src="/images/profile.svg"
         alt="Profile image"
-        width={500}
-        height={500}
-        className="rounded-lg"
+        height={0}
+        width={0}
+        className="w-96 h-auto"
+        priority
       />
     </div>
   );
