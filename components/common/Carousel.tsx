@@ -16,36 +16,66 @@ export const Carousel = ({ children }: CarouselProps) => {
 
   const handleClickNext = () => {
     setDirection(0);
-    setCurrentIndex(currentIndex < children.length - 1 ? currentIndex + 1 : 0);
+    setCurrentIndex((prevIndex) =>
+      prevIndex < children.length - 1 ? prevIndex + 1 : 0
+    );
   };
 
   const handleClickPrevious = () => {
     setDirection(1);
-    setCurrentIndex(
-      currentIndex === 0 ? children.length - 1 : currentIndex - 1
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? children.length - 1 : prevIndex - 1
     );
   };
 
+  const handleSetIndex = (idx: number) => {
+    setDirection(currentIndex < idx ? 0 : 1);
+    setCurrentIndex(idx);
+  };
+
   return (
-    <div className="flex gap-8 md:gap-24 justify-center w-full overflow-hidden relative">
-      <button onClick={() => handleClickPrevious()}>
-        <MdOutlineKeyboardDoubleArrowLeft size={35} />
-      </button>
-      <div className="w-full max-w-3xl overflow-hidden">
-        <AnimatePresence>
-          <motion.div
-            initial={{ x: direction === 0 ? '100%' : '-100%' }}
-            animate={{ x: 0 }}
-            transition={{ duration: 0.5, type: 'spring' }}
-            key={currentIndex}
-          >
-            {children[currentIndex]}
-          </motion.div>
-        </AnimatePresence>
+    <div className="flex flex-col items-center justify-start w-full relative h-full overflow-hidden">
+      <div className="flex gap-8 justify-center items-center w-full max-w-3xl overflow-hidden">
+        <button
+          onClick={handleClickPrevious}
+          className="p-2 rounded-full shadow-md transition-transform transform hover:scale-110"
+        >
+          <MdOutlineKeyboardDoubleArrowLeft size={30} />
+        </button>
+        <div className="w-full overflow-hidden">
+          <AnimatePresence>
+            <motion.div
+              key={currentIndex}
+              initial={{
+                x: direction === 0 ? '100%' : '-100%',
+                opacity: 0,
+              }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, type: 'keyframes' }}
+              className="shadow-lg rounded-lg overflow-hidden"
+            >
+              {children[currentIndex]}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <button
+          onClick={handleClickNext}
+          className="p-2 rounded-full shadow-md transition-transform transform hover:scale-110"
+        >
+          <MdOutlineKeyboardDoubleArrowRight size={30} />
+        </button>
       </div>
-      <button onClick={() => handleClickNext()}>
-        <MdOutlineKeyboardDoubleArrowRight size={35} />
-      </button>
+      <div className="flex gap-2 mt-8">
+        {children.map((_, index) => (
+          <div
+            key={index}
+            className={`w-3 h-3 rounded-full transition-colors ${
+              index === currentIndex ? 'bg-gray-700' : 'bg-gray-300'
+            }`}
+            onClick={() => handleSetIndex(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

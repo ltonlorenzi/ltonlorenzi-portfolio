@@ -1,31 +1,41 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { forwardRef, ReactNode, useEffect } from 'react';
 import { IoCloseCircleSharp } from 'react-icons/io5';
 
-interface Modal {
+interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  ref: React.Ref<HTMLDivElement>;
 }
 
-export default function Modal({ isOpen, onClose, children }: Modal) {
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [onClose]);
+const Modal = forwardRef<HTMLDivElement, ModalProps>(
+  ({ isOpen, onClose, children }, ref) => {
+    useEffect(() => {
+      const handleEsc = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') onClose();
+      };
+      window.addEventListener('keydown', handleEsc);
+      return () => window.removeEventListener('keydown', handleEsc);
+    }, [onClose]);
 
-  if (!isOpen) return null;
+    if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center text-foreground">
-      <div className="bg-white p-6 rounded w-full max-w-md relative">
-        <button className="absolute top-2 right-2" onClick={onClose}>
-          <IoCloseCircleSharp size={25} />
-        </button>
-        {children}
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center text-foreground">
+        <div
+          className="bg-white p-6 rounded-2xl w-full max-w-md relative"
+          ref={ref}
+        >
+          <button className="absolute top-2 right-2" onClick={onClose}>
+            <IoCloseCircleSharp size={25} />
+          </button>
+          {children}
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+);
+
+Modal.displayName = 'Modal';
+
+export default Modal;

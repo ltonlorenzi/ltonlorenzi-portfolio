@@ -19,20 +19,13 @@ MOBILE:
 
 EXTRA:
 
-2. armar bien el CV en PDF en ingles y espaniol
+2. armar bien el CV en PDF en ingles y español
 3. crear componente BUTTON
-4. agregar spinner/suspense
-5. error page
+4. agregar suspense
 
 CONTACT
 
-1. crear form de contacto
-
-ESTILOS:
-
-1. agregar circulos al background blanco y al negro
-
-2. definir los tipos de textos y titulos para toda la web: DEFINIR STYLE SYSTEM Y FONTS GLOBALES
+1. api para mails
 
 ADMIN
 
@@ -41,10 +34,7 @@ ADMIN
 
 GENERAL:
 
-fix translation for the public page
-agregar algunos test. no muchos pero ALGO como para aprender
-fix build
-add Option: OpenAI's GPT-4 AP to generate about description based on the user data
-
-USER:
-quiero que este proyecto se pueda vender y que los usuarios puedan cargar la data que quieran.
+-fix translation for the public page
+-agregar algunos test. no muchos pero ALGO como para aprender
+-add Option: OpenAI's GPT-4 AP to generate about description based on the user data
+-pagination

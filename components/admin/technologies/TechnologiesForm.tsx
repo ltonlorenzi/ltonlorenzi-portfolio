@@ -2,9 +2,12 @@ import Form from '@/components/common/form/Form';
 import TextAreaField from '@/components/common/form/inputs/TextAreaField';
 import TextField from '@/components/common/form/inputs/TextField';
 import { addTechnology } from '@/queries/technologies';
+import { Technology } from '@/types/Technology';
+import { handleError } from '@/utils/handleError';
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useCallback } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 
 const technologySchema = yup.object().shape({
@@ -19,16 +22,20 @@ interface FormValues {
 
 interface TechnologiesForm {
   onClose: () => void;
+  technology?: Technology;
 }
 
-const TechnologiesForm = ({ onClose }: TechnologiesForm) => {
+const TechnologiesForm = ({ onClose, technology }: TechnologiesForm) => {
   const {
     handleSubmit,
     formState: { errors },
     register,
   } = useForm<FormValues>({
     resolver: yupResolver(technologySchema),
+    defaultValues: technology,
   });
+
+  const queryClient = useQueryClient();
 
   /*useCallback and use memo do the same. The difference is that:
     useCallback returns the function and useMemo returns the result of the function*/
@@ -45,16 +52,19 @@ const TechnologiesForm = ({ onClose }: TechnologiesForm) => {
   -we also use useMemo to get the same objects reference through different renders if the object
   does not change.
   */
-  const onSubmit = useCallback((formData: FormValues) => {
-    // You can use the validated data to make your API request here
+  const onSubmit = async (formData: FormValues) => {
     try {
-      const res = addTechnology(formData);
-      console.log(res);
+      const res = await addTechnology(formData);
+      await queryClient.invalidateQueries({
+        queryKey: ['technologies'],
+      });
+      toast.success(res.message);
     } catch (error) {
-      console.log(error);
+      toast.error(handleError(error, 'Error adding technology'));
+    } finally {
+      onClose();
     }
-    console.log(formData);
-  }, []);
+  };
 
   return (
     <Form
@@ -62,6 +72,7 @@ const TechnologiesForm = ({ onClose }: TechnologiesForm) => {
       onSubmit={handleSubmit(onSubmit)}
       className="grid gap-4"
     >
+      <h2 className="flex justify-center mb-4">Add Technology</h2>
       <TextField errors={errors} id="name" label="Name" {...register('name')} />
       <TextAreaField
         errors={errors}

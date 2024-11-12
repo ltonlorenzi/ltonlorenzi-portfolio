@@ -2,9 +2,10 @@
 import { About } from '@/components/admin/About';
 import { Career } from '@/components/admin/Career';
 import { Home } from '@/components/admin/Home';
+import { Projects } from '@/components/admin/Projects';
 import { Technologies } from '@/components/admin/technologies/Technologies';
-import { Projects } from '@/components/public/projects/Projects';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useClickAway } from 'react-use';
 
 const MENU_OPTIONS = [
   { name: 'Home', component: <Home /> },
@@ -17,6 +18,9 @@ const MENU_OPTIONS = [
 export default function Admin() {
   const [selectedOption, setSelectedOption] = useState('Home');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const ref = useRef(null);
+
+  useClickAway(ref, () => setIsSidebarOpen(false));
 
   const renderComponent = () => {
     const option = MENU_OPTIONS.find((op) => op.name === selectedOption);
@@ -30,7 +34,7 @@ export default function Admin() {
   return (
     <div className="bg-dark-background flex flex-grow text-dark-foreground">
       {isSidebarOpen ? (
-        <aside className="w-64 bg-gray-800 p-4">
+        <aside ref={ref} className="w-64 bg-gray-800 p-4">
           <nav>
             <ul className="flex flex-col gap-3 h-full">
               <li className="border-b p-4">

@@ -3,7 +3,7 @@ import { Button } from '@/components/common/Button';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Modal from '@/components/common/Modal';
 import Spinner from '@/components/common/Spinner';
-import Table from '@/components/common/Table';
+import Table from '@/components/common/table/Table';
 import { fetchAllProjects } from '@/queries/projects';
 import { projectsColumns } from '@/todatabase/projects';
 import { useQuery } from '@tanstack/react-query';

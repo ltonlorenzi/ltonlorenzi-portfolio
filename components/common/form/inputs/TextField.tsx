@@ -5,12 +5,14 @@ interface TextFieldProps {
   errors: FieldErrors;
   id: string;
   label: string;
+  type?: string;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
   errors,
   id,
   label,
+  type = 'text',
   ...props
 }) => {
   return (
@@ -19,9 +21,9 @@ const TextField: React.FC<TextFieldProps> = ({
         {label}
       </label>
       <input
-        type="text"
+        type={type}
         id={id}
-        className="w-full border border-gray-300 rounded p-2"
+        className="w-full border border-gray-300 rounded p-2 text-foreground"
         {...props}
       />
       {errors[id] && (

@@ -25,10 +25,14 @@ const Template = ({ children }: TemplateProps) => {
 
   return (
     <div
-      className={`transition-opacity duration-200 transform flex flex-grow p-12 ${
+      className={`transition-opacity overflow-hidden duration-200 transform flex flex-grow py-12 px-8 md:px-16  ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
     >
+      <div className="absolute -top-10 -left-72 w-[400px] h-[400px] rounded-full border border-gray-100 border-opacity-10"></div>
+      <div className="absolute -bottom-28 -right-80 w-[600px] h-[600px] rounded-full border border-gray-100 border-opacity-10"></div>
+      <div className="absolute -top-0 -right-96 w-[500px] h-[500px] rounded-full border border-gray-100 border-opacity-10"></div>
+
       {children}
     </div>
   );

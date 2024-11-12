@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Fira_Code } from 'next/font/google';
 import { ReactNode } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const firaCode = Fira_Code({ subsets: ['latin'] });
 
@@ -20,7 +22,10 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={`${firaCode.className} bg-custom`}>{children}</body>
+      <body className={`${firaCode.className} bg-custom`}>
+        {children}
+        <ToastContainer position="bottom-center" />
+      </body>
     </html>
   );
 }

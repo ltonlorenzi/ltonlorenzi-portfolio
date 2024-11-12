@@ -28,7 +28,7 @@ export default function Home() {
         alt="Profile image"
         height={0}
         width={0}
-        className="w-96 h-auto"
+        className="w-[500px] h-auto"
         priority
       />
     </div>

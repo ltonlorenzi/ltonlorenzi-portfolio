@@ -1,5 +1,5 @@
 import HeaderName from './HeaderName';
-import LanguageChanger from './LanguageChanger';
+// import LanguageChanger from './LanguageChanger';
 import { Navbar } from './Navbar';
 import { NavbarMobile } from './NavbarMobile';
 import ThemeToggle from './ThemeToggle';
@@ -10,7 +10,7 @@ export function Header() {
       <HeaderName />
       <Navbar />
       <ThemeToggle />
-      <LanguageChanger />
+      {/* <LanguageChanger /> */}
       <NavbarMobile />
     </div>
   );

@@ -20,7 +20,7 @@ const TextAreaField: React.FC<TextAreaFieldProps> = ({
       </label>
       <textarea
         id={id}
-        className="w-full border border-gray-300 rounded p-2"
+        className="w-full border border-gray-300 rounded p-2 min-h-32 h-auto text-foreground"
         {...props}
       />
       {errors[id] && (

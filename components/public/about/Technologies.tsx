@@ -18,37 +18,33 @@ import Skill from './Skill';
 
 export const Technologies = () => {
   return (
-    <div>
-      <h2 className="text-center mb-10">Technologies and Tools</h2>
+    <>
+      <h2 className="mt-4">Technologies and Tools</h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 justify-center">
-        <Skill icon={<ReactIcon width={40} height={40} />} name="Express" />
-        <Skill icon={<GitIcon width={40} height={40} />} name="Next.js" />
-        <Skill
-          icon={<BootstrapIcon width={40} height={40} />}
-          name="SQL Server"
-        />
-        <Skill icon={<CSSIcon width={40} height={40} />} name="Angular" />
-        <Skill icon={<ExpressIcon width={40} height={40} />} name="Ionic" />
-        <Skill icon={<HTMLIcon width={40} height={40} />} name="React" />
-        <Skill
-          icon={<JavascriptIcon width={40} height={40} />}
-          name="React Native"
-        />
-        <Skill icon={<MongodbIcon width={40} height={40} />} name="Postman" />
-        <Skill icon={<NodeIcon width={40} height={40} />} name="Bootstrap" />
-        <Skill icon={<PostmanIcon width={40} height={40} />} name="Firebase" />
+      <div className="grid grid-cols-2 md:grid-cols-6 gap-4 justify-center mt-12">
+        <Skill icon={<ReactIcon width={40} height={40} />} name="React" />
         <Skill icon={<GitIcon width={40} height={40} />} name="Git" />
         <Skill
-          icon={<ReactNativeIcon width={40} height={40} />}
-          name="Node.js"
+          icon={<BootstrapIcon width={40} height={40} />}
+          name="Bootstrap"
         />
+        <Skill icon={<CSSIcon width={40} height={40} />} name="CSS" />
+        <Skill icon={<ExpressIcon width={40} height={40} />} name="Express" />
+        <Skill icon={<HTMLIcon width={40} height={40} />} name="HTML" />
         <Skill
-          icon={<FirebaseIcon width={40} height={40} />}
-          name="TypeScript"
+          icon={<JavascriptIcon width={40} height={40} />}
+          name="JavaScript"
         />
+        <Skill icon={<MongodbIcon width={40} height={40} />} name="MongoDB" />
+        <Skill icon={<NodeIcon width={40} height={40} />} name="Node.js" />
+        <Skill icon={<PostmanIcon width={40} height={40} />} name="Postman" />
+        <Skill
+          icon={<ReactNativeIcon width={40} height={40} />}
+          name="React Native"
+        />
+        <Skill icon={<FirebaseIcon width={40} height={40} />} name="Firebase" />
         <Skill icon={<ReduxIcon width={40} height={40} />} name="Redux" />
       </div>
-    </div>
+    </>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const Home = () => {
-  return <div>HomeComponent</div>;
+  return <div className="text-center">HomeComponent</div>;
 };

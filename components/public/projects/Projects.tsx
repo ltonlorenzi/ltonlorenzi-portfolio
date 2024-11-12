@@ -1,5 +1,6 @@
 'use client'; // Mark the component as a client component
 
+import { Carousel } from '@/components/common/Carousel';
 import Spinner from '@/components/common/Spinner';
 import { useLocale } from '@/context/LocaleContext';
 import { fetchProjects } from '@/queries/projects';
@@ -25,14 +26,18 @@ export function Projects() {
   if (isError) return <p>Error loading projects: {error.message}</p>;
 
   return (
-    <div className="p-6">
-      <h1>Projects</h1>
-      {projects?.map((p: Project) => (
-        <div className="border-s-orange-300 p-2" key={p._id}>
-          <h2>{p.title}</h2>
-          <p>{p.description}</p>
-        </div>
-      ))}
+    <div className="flex-col flex justify-center items-center w-full">
+      <Carousel>
+        {projects?.map((p: Project) => (
+          <div
+            className="p-2 flex flex-col justify-center items-center gap-4 h-60"
+            key={p._id}
+          >
+            <h2>{p.title}</h2>
+            <p>{p.description}</p>
+          </div>
+        ))}
+      </Carousel>
     </div>
   );
 }
