@@ -1,6 +1,7 @@
 'use client'; // Mark the component as a client component
 
 import { Carousel } from '@/components/common/Carousel';
+import ErrorMessage from '@/components/common/ErrorMessage';
 import Spinner from '@/components/common/Spinner';
 import { useLocale } from '@/context/LocaleContext';
 import { fetchProjects } from '@/queries/projects';
@@ -13,17 +14,18 @@ export function Projects() {
   const {
     data: projects,
     isLoading,
-    isError,
+    status,
     error,
   } = useQuery({
     queryKey: ['projects', locale], // Locale is part of the query key
     queryFn: () => fetchProjects(locale),
     staleTime: 1000 * 60 * 30, // Data is considered fresh for 30 minutes
     refetchOnWindowFocus: false, // Disable refetching on window focus
+    retry: 0,
   });
 
   if (isLoading) return <Spinner />;
-  if (isError) return <p>Error loading projects: {error.message}</p>;
+  if (status === 'error') return <ErrorMessage message={error.message} />;
 
   return (
     <div className="flex-col flex justify-center items-center w-full">

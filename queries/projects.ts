@@ -1,16 +1,15 @@
+import { handleError } from '@/utils/handleError';
+import axios from 'axios';
+
 export const fetchProjects = async (locale: string) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/projects?locale=${locale}`,
-    {
-      cache: 'no-cache',
-    }
-  );
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch projects');
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/projects?locale=${locale}`
+    );
+    return res.data;
+  } catch (error) {
+    throw new Error(handleError(error, 'Failed to get projects'));
   }
-
-  return res.json();
 };
 
 export const fetchAllProjects = async () => {

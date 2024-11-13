@@ -11,7 +11,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
   onRetry,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center h-full">
+    <div className="flex w-full flex-col items-center justify-center h-full">
       <FiAlertCircle className="text-red-500 text-6xl mb-4" />
       <p className="text-center text-xl font-semibold text-white mb-6">
         {message}
