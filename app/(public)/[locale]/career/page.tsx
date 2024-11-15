@@ -3,10 +3,10 @@ import { jobs } from '@/todatabase/jobs';
 import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 
-const CareerTimeline = () => {
+const Career = () => {
   return (
     <div className="relative w-full flex flex-col items-center overflow-hidden">
-      <div className="absolute w-1 bg-gray-300 h-full left-1/2 transform -translate-x-1/2 my-12"></div>
+      <div className="invisible md:visible absolute w-1 bg-gray-300 h-full left-1/2 transform -translate-x-1/2 my-12"></div>
       <AnimatePresence>
         {jobs.map((job, index) => (
           <div
@@ -22,4 +22,4 @@ const CareerTimeline = () => {
   );
 };
 
-export default CareerTimeline;
+export default Career;

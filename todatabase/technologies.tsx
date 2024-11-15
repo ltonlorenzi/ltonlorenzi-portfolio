@@ -3,16 +3,19 @@ export const technologies = [
     _id: '1',
     name: 'React',
     description: 'A JavaScript library for building user interfaces',
+    pathToImage: 'images/technologies/react.svg',
   },
   {
     _id: '2',
     name: 'Node.js',
     description: "JavaScript runtime built on Chrome's V8 JavaScript engine",
+    pathToImage: 'images/technologies/nodejs.svg',
   },
   {
     _id: '3',
     name: 'MongoDB',
     description: 'A document database, part of the NoSQL family',
+    pathToImage: 'images/technologies/mongodb.svg',
   },
   {
     _id: '4',
@@ -23,6 +26,7 @@ export const technologies = [
     _id: '5',
     name: 'TypeScript',
     description: 'A superset of JavaScript that adds static types',
+    pathToImage: '/images/technologies/typescript.svg',
   },
   { _id: '6', name: 'GraphQL', description: 'A query language for APIs' },
   {
@@ -61,16 +65,39 @@ export const technologies = [
     name: 'Firebase',
     description:
       'A platform developed by Google for creating mobile and web applications',
+    pathToImage: '/images/technologies/firebase.svg',
   },
   {
     _id: '14',
     name: 'Angular',
     description: 'A platform for building mobile and desktop web applications',
+    pathToImage: '/images/technologies/angular.png',
   },
   {
     _id: '15',
     name: 'Python',
     description:
       'A programming language known for its readability and versatility',
+  },
+  {
+    _id: '16',
+    name: 'Ionic',
+    description:
+      'Ionic empowers web developers to build leading cross-platform mobile apps and Progressive Web Apps (PWAs)',
+    pathToImage: '/images/technologies/ionic.png',
+  },
+  {
+    _id: '17',
+    name: 'Soap',
+    description:
+      'Simple Objects Access Protocol is a web communication protocol designed for Microsoft back in 1998.',
+    pathToImage: '/images/technologies/soap.svg',
+  },
+  {
+    _id: '18',
+    name: 'Git',
+    description:
+      'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.',
+    pathToImage: '/images/technologies/git.svg',
   },
 ];

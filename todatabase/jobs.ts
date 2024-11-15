@@ -11,7 +11,7 @@ export const jobs = [
     title: 'Front End Developer',
     companyId: 'torc',
     company: 'Torc (Appstract)',
-    body: '',
+    body: 'Torc is a company that connects programmers with companies. I developed the entire website where users could apply to jobs and companies could offer opportunities. This website was created with React.',
   },
   {
     year: '2020 - 2023',
@@ -32,7 +32,7 @@ export const jobs = [
     title: 'Junior Developer (internship)',
     company: 'Summant Technologies',
     companyId: 'summant',
-    body: 'Meta4, PeopleNet development for an HR Company. Web development with HTML, CSS, JavaScript. Backend database development with SQL Server',
+    body: 'PeopleNet(Meta4) development for HR clients such as EfectivoSi. Web development with HTML, CSS, JavaScript. Backend database development with SQL Server',
   },
   {
     year: '2015 - 2016',

@@ -6,6 +6,7 @@ import ReactQueryProvider from '@/context/ReactQueryProvider';
 import TranslationsProvider from '@/context/TranslationsProvider';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+
 import '@/app/globals.css';
 
 const i18nNamespaces = ['common'];

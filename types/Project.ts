@@ -5,10 +5,12 @@ export interface Project {
   start_date: Date;
   end_date: Date;
   technologies: string[];
-  translations: [
+  translations?: [
     {
       locale: string;
       fields: { title: string; description: string };
     },
   ];
+  company: string;
+  pathToImage: string;
 }
