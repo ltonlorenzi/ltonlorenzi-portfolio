@@ -35,7 +35,7 @@ export const Carousel = ({ children }: CarouselProps) => {
 
   return (
     <div className="flex flex-col items-center w-full relative h-full overflow-hidden">
-      <div className="flex gap-8 justify-center items-center overflow-hidden">
+      <div className="flex md:gap-8 justify-center items-center overflow-hidden">
         <button
           onClick={handleClickPrevious}
           className="p-2 rounded-full shadow-md transition-transform transform hover:scale-110"

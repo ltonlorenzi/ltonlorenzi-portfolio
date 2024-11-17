@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const TechnologiesSchema = new mongoose.Schema({
+const TechnologySchema = new mongoose.Schema({
   _id: {
     type: Number,
     required: true,
@@ -13,7 +13,11 @@ const TechnologiesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
 });
 
-export default mongoose.models.Technologies ||
-  mongoose.model('Technologies', TechnologiesSchema);
+export default mongoose.models.Technology ||
+  mongoose.model('Technology', TechnologySchema);

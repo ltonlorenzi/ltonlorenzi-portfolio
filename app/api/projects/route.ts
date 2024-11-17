@@ -2,7 +2,6 @@ import { defaultLocale } from '@/i18nConfig';
 import connectMongoDB from '@/libs/mongodb';
 import Project from '@/models/Project';
 import Translation from '@/models/Translation';
-import { handleError } from '@/utils/handleError';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {

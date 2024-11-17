@@ -77,6 +77,10 @@ export const Technologies = () => {
       header: 'Description',
       footer: (props) => props.column.id,
     }),
+    columnHelper.accessor('imageUrl', {
+      header: 'Image URL',
+      footer: (props) => props.column.id,
+    }),
     columnHelper.display({
       id: 'actions',
       header: 'Actions',
@@ -111,11 +115,7 @@ export const Technologies = () => {
         title="Technologies"
         handleClickAdd={() => setIsModalOpen(true)}
       />
-      <Table
-        data={data.technologies}
-        columns={technologiesColumns}
-        sorting={sorting}
-      />
+      <Table data={data} columns={technologiesColumns} sorting={sorting} />
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} ref={modalRef}>
         <TechnologiesForm onClose={handleCloseModal} technology={rowSelected} />
       </Modal>

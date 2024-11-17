@@ -2,6 +2,7 @@
 
 import { Job } from '@/types/Job';
 import { motion, useInView } from 'framer-motion';
+import moment from 'moment';
 import Image from 'next/image';
 import { useRef } from 'react';
 
@@ -36,7 +37,10 @@ export const TimelineCard = ({ index, job }: TimelineCardProps) => {
         <div>
           <div className="text-lg font-semibold text-blue-600">{job.title}</div>
           <div className="text-gray-500">{job.company}</div>
-          <div className="text-gray-400">{job.year}</div>
+          <div className="text-gray-400">
+            {moment.utc(job.start_date).year()} -
+            {moment.utc(job.end_date).year()}
+          </div>
         </div>
         <div className="ml-auto min-w-16">
           <Image
@@ -44,6 +48,7 @@ export const TimelineCard = ({ index, job }: TimelineCardProps) => {
             src={`/images/companies/${job.companyId}.jpg`}
             width={64}
             height={64}
+            className="rounded-lg object-cover"
           />
         </div>
       </div>

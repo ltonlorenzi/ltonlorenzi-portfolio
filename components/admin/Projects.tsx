@@ -5,7 +5,8 @@ import Modal from '@/components/common/Modal';
 import Spinner from '@/components/common/Spinner';
 import Table from '@/components/common/table/Table';
 import { fetchAllProjects } from '@/queries/projects';
-import { projectsColumns } from '@/todatabase/projects';
+import { fetchTechnologies } from '@/queries/technologies';
+import { getProjectsColumns } from '@/todatabase/projects';
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { IoMdAddCircle } from 'react-icons/io';
@@ -13,7 +14,7 @@ import { IoMdAddCircle } from 'react-icons/io';
 export const Projects = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data, status } = useQuery({
+  const { data: projects, status } = useQuery({
     queryKey: ['projects', 'en'],
     queryFn: () => fetchAllProjects(),
     refetchInterval: 1000 * 60 * 20, // Poll in 20 minutes
@@ -23,8 +24,13 @@ export const Projects = () => {
     enabled: true, // Enable the query
   });
 
-  if (status === 'pending') return <Spinner />;
-  if (status === 'error') return <ErrorMessage />;
+  const { data: technologies, status: techStatus } = useQuery({
+    queryKey: ['technologies'],
+    queryFn: () => fetchTechnologies(),
+  });
+
+  if (status === 'pending' || techStatus === 'pending') return <Spinner />;
+  if (status === 'error' || techStatus === 'error') return <ErrorMessage />;
 
   return (
     <div className="max-w-full w-full">
@@ -38,7 +44,7 @@ export const Projects = () => {
           <IoMdAddCircle />
         </Button>
       </div>
-      <Table data={data} columns={projectsColumns} />
+      <Table data={projects} columns={getProjectsColumns(technologies)} />
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <h2>{'Edit Technology'}</h2>
       </Modal>

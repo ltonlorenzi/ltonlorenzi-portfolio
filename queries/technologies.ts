@@ -17,13 +17,23 @@ export const addTechnology = async (technology: Technology) => {
   try {
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/admin/technologies`,
-      {
-        body: { technology },
-      }
+      technology
     );
     return res.data;
   } catch (error) {
     throw new Error(handleError(error, 'Failed to add the technology'));
+  }
+};
+
+export const editTechnology = async (technology: Technology) => {
+  try {
+    const res = await axios.put(
+      `${process.env.NEXT_PUBLIC_API_URL}/admin/technologies`,
+      technology
+    );
+    return res.data;
+  } catch (error) {
+    throw new Error(handleError(error, 'Failed to edit the technology'));
   }
 };
 

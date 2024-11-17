@@ -5,60 +5,83 @@ import ErrorMessage from '@/components/common/ErrorMessage';
 import Spinner from '@/components/common/Spinner';
 import { useLocale } from '@/context/LocaleContext';
 import { fetchProjects } from '@/queries/projects';
-import { projectsToDb } from '@/todatabase/projects';
-import { technologies } from '@/todatabase/technologies';
+import { fetchTechnologies } from '@/queries/technologies';
+// import { projectsToDb } from '@/todatabase/projects';
+// import { technologies } from '@/todatabase/technologies';
 import { Project } from '@/types/Project';
+import { Technology } from '@/types/Technology';
 import { useQuery } from '@tanstack/react-query';
+import moment from 'moment';
 import Image from 'next/image';
+import React from 'react';
 
 export function Projects() {
-  // const locale = useLocale();
+  const locale = useLocale();
 
-  // const {
-  //   data: projects,
-  //   isLoading,
-  //   status,
-  //   error,
-  // } = useQuery({
-  //   queryKey: ['projects', locale], // Locale is part of the query key
-  //   queryFn: () => fetchProjects(locale),
-  //   staleTime: 1000 * 60 * 30, // Data is considered fresh for 30 minutes
-  //   refetchOnWindowFocus: false, // Disable refetching on window focus
-  //   retry: 0,
-  // });
+  const {
+    data: projects,
+    isLoading,
+    status,
+    error,
+  } = useQuery({
+    queryKey: ['projects', locale], // Locale is part of the query key
+    queryFn: () => fetchProjects(locale),
+    staleTime: 1000 * 60 * 30, // Data is considered fresh for 30 minutes
+    refetchOnWindowFocus: false, // Disable refetching on window focus
+    retry: 0,
+  });
 
-  // if (isLoading) return <Spinner />;
-  // if (status === 'error') return <ErrorMessage message={error.message} />;
+  const {
+    data: technologies,
+    isLoading: isLoadingTech,
+    status: techError,
+  } = useQuery({
+    queryKey: ['technologies'],
+    queryFn: () => fetchTechnologies(),
+  });
 
-  const projectsData = projectsToDb;
-  const tec = technologies;
+  if (isLoading || isLoadingTech) return <Spinner />;
+  if (status === 'error' || techError === 'error')
+    return <ErrorMessage message={error?.message} />;
+
   return (
     <div className="flex-col flex-grow flex justify-center items-center w-full">
       <Carousel>
-        {projectsData?.map((p: Project) => (
-          <div key={p._id} className="flex gap-8 p-2 max-w-3xl">
-            <div>
-              <div className="flex flex-col gap-4">
+        {projects.map((p: Project) => (
+          <div
+            key={p._id}
+            className="flex gap-8 p-2 max-w-4xl items-center flex-col md:flex-row"
+          >
+            <div className="flex-grow">
+              <div className="flex flex-col gap-2">
                 <h2>{p.title}</h2>
+                <div className="font-bold text-gray-500">
+                  {moment.utc(p.start_date).year()} -{' '}
+                  {moment.utc(p.end_date).year()}
+                </div>
                 <p>{p.description}</p>
               </div>
               <div className="mt-6">
                 <h3>Tech Stack</h3>
-                <div className="grid grid-cols-5 gap-2 mt-4">
+                <div className="grid grid-cols-3 md:grid-cols-5 gap-2 mt-4">
                   {p.technologies.map((technology) => {
-                    const t = tec.find((t) => t._id === technology);
+                    const t = technologies.find(
+                      (t: Technology) => t._id === technology
+                    );
                     return (
                       <div
                         key={technology}
-                        className="flex flex-col items-center"
+                        className="flex flex-col items-center justify-between text-center"
                       >
                         <Image
-                          alt="technology-icon"
+                          alt={t?.name || 'tool'}
                           src={
-                            t?.pathToImage || '/images/technologies/default.svg'
+                            t?.imageUrl || '/images/technologies/default.svg'
                           }
-                          height={30}
+                          className="rounded-md" // Using tailwindcss
                           width={30}
+                          height={30}
+                          style={{ height: 30, width: 30 }}
                         />
                         <div className="text-xs">{t?.name || 'tool'}</div>
                       </div>
@@ -67,13 +90,34 @@ export function Projects() {
                 </div>
               </div>
             </div>
-            <Image
-              src={p.pathToImage}
-              alt="project"
-              height={200}
-              width={200}
-              className="rounded-3xl"
-            />
+            {/* Project Image */}
+            <div className="flex flex-col justify-around items-center gap-3">
+              <div
+                className={`relative flex-shrink-0 ${
+                  p.type === 'mobile'
+                    ? ' w-[180px] h-96'
+                    : 'aspect-square w-96 h-60'
+                }`}
+              >
+                <Image
+                  loading="lazy"
+                  src={p.imageUrl}
+                  alt="project"
+                  className="rounded-3xl"
+                  fill
+                  sizes="h-auto w-auto"
+                />
+              </div>
+              {p.projectUrl && (
+                <a
+                  href={p.projectUrl}
+                  target="_blank"
+                  className="text-sm hover:scale-105 hover:text-gray-400 text-gray-500"
+                >
+                  Visit
+                </a>
+              )}
+            </div>
           </div>
         ))}
       </Carousel>

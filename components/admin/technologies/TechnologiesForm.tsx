@@ -1,7 +1,7 @@
 import Form from '@/components/common/form/Form';
 import TextAreaField from '@/components/common/form/inputs/TextAreaField';
 import TextField from '@/components/common/form/inputs/TextField';
-import { addTechnology } from '@/queries/technologies';
+import { addTechnology, editTechnology } from '@/queries/technologies';
 import { Technology } from '@/types/Technology';
 import { handleError } from '@/utils/handleError';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,13 +11,15 @@ import { toast } from 'react-toastify';
 import * as yup from 'yup';
 
 const technologySchema = yup.object().shape({
-  name: yup.string().required('name is required'),
-  description: yup.string().required('description is required'),
+  name: yup.string().required('Name is required'),
+  description: yup.string().required('Description is required'),
+  imageUrl: yup.string().required('Image url is required'),
 });
 
 interface FormValues {
   name: string;
   description: string;
+  imageUrl: string;
 }
 
 interface TechnologiesForm {
@@ -54,7 +56,9 @@ const TechnologiesForm = ({ onClose, technology }: TechnologiesForm) => {
   */
   const onSubmit = async (formData: FormValues) => {
     try {
-      const res = await addTechnology(formData);
+      const res = technology
+        ? await editTechnology(formData)
+        : await addTechnology(formData);
       await queryClient.invalidateQueries({
         queryKey: ['technologies'],
       });
@@ -70,6 +74,7 @@ const TechnologiesForm = ({ onClose, technology }: TechnologiesForm) => {
     <Form
       onClose={onClose}
       onSubmit={handleSubmit(onSubmit)}
+      submitButtonText={technology ? 'Edit' : 'Create'}
       className="grid gap-4"
     >
       <h2 className="flex justify-center mb-4">Add Technology</h2>
@@ -79,6 +84,12 @@ const TechnologiesForm = ({ onClose, technology }: TechnologiesForm) => {
         id="description"
         label="Description"
         {...register('description')}
+      />
+      <TextField
+        errors={errors}
+        id="imageUrl"
+        label="Image URL"
+        {...register('imageUrl')}
       />
     </Form>
   );

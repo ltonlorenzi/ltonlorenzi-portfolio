@@ -24,9 +24,22 @@ GENERAL:
 -agregar algunos test. no muchos pero ALGO como para aprender (jest / react testing library)
 -integrar ci/cd
 -docker: investigar
--store the images in AWS free trier
+-store the images in postimg
+-componente para listas con 0 registros con un boton para agregar el primer registro (admin)
 
 bugs:
 -fix scroll en pagina de proyectos
 -fix center projects y definir mejor el flex grow general
 -contact me not working
+
+SEMANA:
+
+-terminar crud de proyectos y tecnologias
+-terminar crud de career
+-agregar todos los proyectos (desde el armin) (desde el admin)
+-terminar el CV
+-actualizar linkedin con el CV
+-actualizar la desc de career
+-fix contact me
+-fix scroll paginas proyectos
+-agregar validaciones ZOD en la API

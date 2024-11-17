@@ -9,6 +9,10 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  company: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -22,7 +26,20 @@ const ProjectSchema = new mongoose.Schema({
     required: true,
   },
   technologies: {
-    type: Array<string>,
+    type: [Number],
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    enum: ['desktop', 'mobile'],
+    required: true,
+  },
+  projectUrl: {
+    type: String,
     required: true,
   },
 });

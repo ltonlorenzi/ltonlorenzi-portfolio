@@ -4,7 +4,7 @@ export interface Project {
   description: string;
   start_date: Date;
   end_date: Date;
-  technologies: string[];
+  technologies: number[];
   translations?: [
     {
       locale: string;
@@ -12,5 +12,7 @@ export interface Project {
     },
   ];
   company: string;
-  pathToImage: string;
+  imageUrl: string;
+  type?: string;
+  projectUrl?: string;
 }
