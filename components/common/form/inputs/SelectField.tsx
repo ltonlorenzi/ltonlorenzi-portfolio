@@ -6,14 +6,16 @@ import {
   FieldValues,
   Path,
 } from 'react-hook-form';
-import Select from 'react-select';
+import Select, { ActionMeta, MultiValue, SingleValue } from 'react-select';
 
 interface SelectProps<TFormValues extends FieldValues> {
   errors: FieldErrors<TFormValues>;
-  options: { value: string | undefined; label: string }[];
+  options: { value: string | number | undefined; label: string }[];
   id: Path<TFormValues>;
   label: string;
   control: Control<TFormValues>;
+  isMulti?: boolean;
+  className?: string;
 }
 
 const SelectField = <TFormValues extends FieldValues>({
@@ -22,9 +24,11 @@ const SelectField = <TFormValues extends FieldValues>({
   id,
   label,
   control,
+  isMulti = false,
+  className,
 }: SelectProps<TFormValues>) => {
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={id} className="block font-medium">
         {label}
       </label>
@@ -33,15 +37,50 @@ const SelectField = <TFormValues extends FieldValues>({
         control={control}
         render={({ field }) => (
           <Select
+            isMulti={isMulti}
             id={id}
             options={options}
             isClearable
             {...field} // Spread the field props from react-hook-form
-            onChange={(selectedOption) => {
-              // When an option is selected, update the form with only the 'value'
-              field.onChange(selectedOption ? selectedOption.value : null);
+            value={
+              isMulti
+                ? options.filter((option) =>
+                    field.value?.includes(option.value)
+                  ) // Filter selected options
+                : options.find((option) => option.value === field.value) // Single select logic
+            }
+            onChange={(
+              selectedOption:
+                | MultiValue<{
+                    value: string | number | undefined;
+                    label: string;
+                  }>
+                | SingleValue<{
+                    value: string | number | undefined;
+                    label: string;
+                  }>,
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              _actionMeta: ActionMeta<{
+                value: string | number | undefined;
+                label: string;
+              }>
+            ) => {
+              const value = isMulti
+                ? (
+                    selectedOption as MultiValue<{
+                      value: string | number | undefined;
+                      label: string;
+                    }>
+                  ).map((option) => option.value) // Handle multi-select values as an array
+                : (
+                    selectedOption as SingleValue<{
+                      value: string | number | undefined;
+                      label: string;
+                    }>
+                  )?.value; // Handle single select value
+
+              field.onChange(value); // Update react-hook-form with the new value
             }}
-            value={options.find((option) => option.value === field.value)} // Set the selected option based on form value
           />
         )}
       />

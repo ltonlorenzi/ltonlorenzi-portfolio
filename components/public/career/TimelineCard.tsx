@@ -45,7 +45,7 @@ export const TimelineCard = ({ index, job }: TimelineCardProps) => {
         <div className="ml-auto min-w-16">
           <Image
             alt="icon"
-            src={`/images/companies/${job.companyId}.jpg`}
+            src={job.imageUrl}
             width={64}
             height={64}
             className="rounded-lg object-cover"

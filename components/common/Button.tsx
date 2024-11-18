@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 interface ButtonProps {
   children: ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  className: string;
+  className?: string;
 }
 
 export const Button = ({ children, onClick, className }: ButtonProps) => {

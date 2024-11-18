@@ -1,8 +1,9 @@
 'use client';
+import { Locale } from '@/types/Locale';
 import React, { createContext, useContext, ReactNode } from 'react';
 
 interface LocaleContextProps {
-  locale: string;
+  locale: Locale;
 }
 
 const LocaleContext = createContext<LocaleContextProps | undefined>(undefined);
@@ -11,7 +12,7 @@ export const LocaleProvider = ({
   locale,
   children,
 }: {
-  locale: string;
+  locale: Locale;
   children: ReactNode;
 }) => {
   return (

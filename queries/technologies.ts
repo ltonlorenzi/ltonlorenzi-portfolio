@@ -27,7 +27,7 @@ export const addTechnology = async (technology: Technology) => {
 
 export const editTechnology = async (technology: Technology) => {
   try {
-    const res = await axios.put(
+    const res = await axios.patch(
       `${process.env.NEXT_PUBLIC_API_URL}/admin/technologies`,
       technology
     );

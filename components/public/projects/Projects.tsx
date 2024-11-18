@@ -59,10 +59,10 @@ export function Projects() {
                   {moment.utc(p.start_date).year()} -{' '}
                   {moment.utc(p.end_date).year()}
                 </div>
-                <p>{p.description}</p>
+                <p className="text-sm">{p.description}</p>
               </div>
               <div className="mt-6">
-                <h3>Tech Stack</h3>
+                <h4>Tech Stack</h4>
                 <div className="grid grid-cols-3 md:grid-cols-5 gap-2 mt-4">
                   {p.technologies.map((technology) => {
                     const t = technologies.find(
@@ -91,33 +91,35 @@ export function Projects() {
               </div>
             </div>
             {/* Project Image */}
-            <div className="flex flex-col justify-around items-center gap-3">
-              <div
-                className={`relative flex-shrink-0 ${
-                  p.type === 'mobile'
-                    ? ' w-[180px] h-96'
-                    : 'aspect-square w-96 h-60'
-                }`}
-              >
-                <Image
-                  loading="lazy"
-                  src={p.imageUrl}
-                  alt="project"
-                  className="rounded-3xl"
-                  fill
-                  sizes="h-auto w-auto"
-                />
-              </div>
-              {p.projectUrl && (
-                <a
-                  href={p.projectUrl}
-                  target="_blank"
-                  className="text-sm hover:scale-105 hover:text-gray-400 text-gray-500"
+            {p.imageUrl && (
+              <div className="flex flex-col justify-around items-center gap-3">
+                <div
+                  className={`relative flex-shrink-0 ${
+                    p.type === 'mobile'
+                      ? ' w-[180px] h-96'
+                      : 'aspect-square w-96 h-60'
+                  }`}
                 >
-                  Visit
-                </a>
-              )}
-            </div>
+                  <Image
+                    loading="lazy"
+                    src={p.imageUrl}
+                    alt="project"
+                    className="rounded-3xl"
+                    fill
+                    sizes="h-auto w-auto"
+                  />
+                </div>
+                {p.projectUrl && (
+                  <a
+                    href={p.projectUrl}
+                    target="_blank"
+                    className="text-sm hover:scale-105 hover:text-gray-400 text-gray-500"
+                  >
+                    Visit
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         ))}
       </Carousel>

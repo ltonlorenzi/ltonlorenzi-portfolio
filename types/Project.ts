@@ -1,3 +1,5 @@
+import { Locale } from './Locale';
+
 export interface Project {
   _id?: number;
   title: string;
@@ -5,14 +7,12 @@ export interface Project {
   start_date: Date;
   end_date: Date;
   technologies: number[];
-  translations?: [
-    {
-      locale: string;
-      fields: { title: string; description: string };
-    },
-  ];
+  translations?: {
+    locale: Locale;
+    fields: { description: string; title: string };
+  }[];
   company: string;
-  imageUrl: string;
-  type?: string;
+  imageUrl?: string;
+  type: string;
   projectUrl?: string;
 }

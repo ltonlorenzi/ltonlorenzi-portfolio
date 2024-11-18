@@ -6,4 +6,5 @@ export interface Job {
   end_date: Date;
   body: string;
   companyId: string;
+  imageUrl: string;
 }

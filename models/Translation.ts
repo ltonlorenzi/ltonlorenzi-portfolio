@@ -12,6 +12,7 @@ const TranslationSchema = new mongoose.Schema({
   locale: {
     type: String,
     required: true,
+    enum: ['en', 'es'],
   },
   fields: {
     type: Object,

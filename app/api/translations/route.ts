@@ -17,8 +17,6 @@ export async function POST(req: NextRequest) {
   });
   return NextResponse.json({ message: 'Translations created', status: 200 });
 }
-
-//function to update the translations // insert and delete fields
 export async function PUT(req: NextRequest) {
   try {
     const { translations } = await req.json();

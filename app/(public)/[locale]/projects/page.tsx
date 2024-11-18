@@ -1,5 +1,6 @@
 import { Projects as ProjectsComponent } from '@/components/public/projects/Projects';
 import { fetchProjects } from '@/queries/projects';
+import { Locale } from '@/types/Locale';
 import {
   dehydrate,
   HydrationBoundary,
@@ -8,7 +9,7 @@ import {
 
 interface ProjectsProps {
   params: Promise<{
-    locale: string;
+    locale: Locale;
   }>;
 }
 

@@ -4,9 +4,9 @@ import { Header } from '@/components/common/Header';
 import { LocaleProvider } from '@/context/LocaleContext';
 import ReactQueryProvider from '@/context/ReactQueryProvider';
 import TranslationsProvider from '@/context/TranslationsProvider';
+import { Locale } from '@/types/Locale';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
-
 import '@/app/globals.css';
 
 const i18nNamespaces = ['common'];
@@ -21,7 +21,7 @@ export default async function LocaleLayout({
   params,
 }: Readonly<{
   children: ReactNode;
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }>) {
   //Con este metodo solo puedo hacer server side translations. Para hacer las client-side tengo que definir el translations provider
   //Translations provider: provide translations to all of the nested components

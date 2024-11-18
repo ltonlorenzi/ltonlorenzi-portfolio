@@ -76,8 +76,13 @@ function Table<TData>({ data, columns, sorting }: TableProps<TData>) {
               className="hover:bg-gray-100 transition-colors border-t border-gray-200"
             >
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="px-4 py-3">
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                <td
+                  key={cell.id}
+                  className="px-4 py-3 max-h-20 overflow-ellipsis max-w-64 break-words"
+                >
+                  <div className="line-clamp-3">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </div>
                 </td>
               ))}
             </tr>

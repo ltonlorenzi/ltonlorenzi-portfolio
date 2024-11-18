@@ -2,7 +2,6 @@ import Form from '@/components/common/form/Form';
 import TextAreaField from '@/components/common/form/inputs/TextAreaField';
 import TextField from '@/components/common/form/inputs/TextField';
 import { addTechnology, editTechnology } from '@/queries/technologies';
-import { Technology } from '@/types/Technology';
 import { handleError } from '@/utils/handleError';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useQueryClient } from '@tanstack/react-query';
@@ -12,19 +11,19 @@ import * as yup from 'yup';
 
 const technologySchema = yup.object().shape({
   name: yup.string().required('Name is required'),
-  description: yup.string().required('Description is required'),
-  imageUrl: yup.string().required('Image url is required'),
+  description: yup.string(),
+  imageUrl: yup.string(),
 });
 
 interface FormValues {
   name: string;
-  description: string;
-  imageUrl: string;
+  description?: string;
+  imageUrl?: string;
 }
 
 interface TechnologiesForm {
   onClose: () => void;
-  technology?: Technology;
+  technology?: FormValues;
 }
 
 const TechnologiesForm = ({ onClose, technology }: TechnologiesForm) => {
@@ -55,10 +54,15 @@ const TechnologiesForm = ({ onClose, technology }: TechnologiesForm) => {
   does not change.
   */
   const onSubmit = async (formData: FormValues) => {
+    const cleanedData = {
+      ...formData,
+      description: formData.description?.trim() || undefined,
+      imageUrl: formData.imageUrl?.trim() || undefined,
+    };
     try {
       const res = technology
-        ? await editTechnology(formData)
-        : await addTechnology(formData);
+        ? await editTechnology(cleanedData)
+        : await addTechnology(cleanedData);
       await queryClient.invalidateQueries({
         queryKey: ['technologies'],
       });
@@ -75,7 +79,7 @@ const TechnologiesForm = ({ onClose, technology }: TechnologiesForm) => {
       onClose={onClose}
       onSubmit={handleSubmit(onSubmit)}
       submitButtonText={technology ? 'Edit' : 'Create'}
-      className="grid gap-4"
+      className="grid gap-4 min-w-[420px]"
     >
       <h2 className="flex justify-center mb-4">Add Technology</h2>
       <TextField errors={errors} id="name" label="Name" {...register('name')} />

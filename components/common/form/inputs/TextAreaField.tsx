@@ -5,16 +5,18 @@ interface TextAreaFieldProps {
   errors: FieldErrors;
   id: string;
   label: string;
+  className?: string;
 }
 
 const TextAreaField: React.FC<TextAreaFieldProps> = ({
   errors,
   id,
   label,
+  className,
   ...props
 }) => {
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={id} className="block font-medium">
         {label}
       </label>

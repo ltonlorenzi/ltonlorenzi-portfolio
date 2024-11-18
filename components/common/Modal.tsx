@@ -22,10 +22,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
 
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center text-foreground">
-        <div
-          className="bg-white p-6 rounded-2xl w-full max-w-md relative"
-          ref={ref}
-        >
+        <div className="bg-white p-6 rounded-2xl m-4 relative" ref={ref}>
           <button className="absolute top-2 right-2" onClick={onClose}>
             <IoCloseCircleSharp size={25} />
           </button>

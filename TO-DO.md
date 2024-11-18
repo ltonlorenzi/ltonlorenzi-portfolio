@@ -18,28 +18,36 @@ ADMIN
 GENERAL:
 
 -fix translation for the public page
--agregar responsive
 -add Option: OpenAI's GPT-4 AP to generate about description based on the user data
--terminar la pagina de proyectos
 -agregar algunos test. no muchos pero ALGO como para aprender (jest / react testing library)
 -integrar ci/cd
 -docker: investigar
 -store the images in postimg
 -componente para listas con 0 registros con un boton para agregar el primer registro (admin)
+-agregar modal para ver todo el texto de projects
+-pagination admin por URL
+-edit modal de admin con id en URL
+-upload images from projects to postimage and set the imageUrl
+-agregar validaciones ZOD en la API
+-crud de translations
+-crear el form de tranlations en projects
+-expand projects image on hover to the center (estaria bueno que se agrande, se centre y que se habilite un carousel con mas imagenes)
 
 bugs:
 -fix scroll en pagina de proyectos
 -fix center projects y definir mejor el flex grow general
 -contact me not working
+-fix issues de consola (mas que nada en forms)
+-fix valores por default en el select de projects
 
 SEMANA:
 
--terminar crud de proyectos y tecnologias
 -terminar crud de career
--agregar todos los proyectos (desde el armin) (desde el admin)
+-agregar todos los proyectos (desde el armin)
 -terminar el CV
 -actualizar linkedin con el CV
--actualizar la desc de career
--fix contact me
 -fix scroll paginas proyectos
--agregar validaciones ZOD en la API
+-ver por que esta tan lento
+-subir a un dominio para poder mostrarlo
+-armar cv en plataformas freelance
+-agregar responsive

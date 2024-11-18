@@ -4,13 +4,6 @@ import Project from '@/models/Project';
 import Translation from '@/models/Translation';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(req: NextRequest) {
-  const { title, description } = await req.json();
-  await connectMongoDB();
-  await Project.create({ title, description });
-  return NextResponse.json({ message: 'Project created', status: 201 });
-}
-
 export async function GET(req: NextRequest) {
   try {
     const locale = req.nextUrl.searchParams.get('locale');

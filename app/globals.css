@@ -21,3 +21,7 @@ h2 {
 h3 {
   @apply md:text-xl text-lg font-semibold;
 }
+
+h4 {
+  @apply md:text-lg text-base font-semibold;
+}

@@ -2,7 +2,7 @@
 import { About } from '@/components/admin/About';
 import { Career } from '@/components/admin/Career';
 import { Home } from '@/components/admin/Home';
-import { Projects } from '@/components/admin/Projects';
+import { Projects } from '@/components/admin/projects/Projects';
 import { Technologies } from '@/components/admin/technologies/Technologies';
 import { useRef, useState } from 'react';
 import { useClickAway } from 'react-use';

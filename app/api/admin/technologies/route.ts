@@ -49,6 +49,12 @@ export async function POST(req: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { message: 'Validation failed', errors: error.errors },
+        { status: 400 }
+      );
+    }
     return NextResponse.json(
       { message: handleError(error, 'Failed to add technology') },
       {
@@ -65,14 +71,13 @@ export async function PUT(req: NextRequest) {
     const updatedTechnology = await Technology.findByIdAndUpdate(
       technology._id,
       technology,
-      { new: true } // Return the updated document
+      { new: true } //returns the updated document
     );
-    if (!updatedTechnology) {
+    if (!updatedTechnology)
       return NextResponse.json(
         { message: 'Technology not found' },
         { status: 404 }
       );
-    }
     return NextResponse.json(
       { message: 'Technology updated', data: updatedTechnology },
       { status: 200 }
@@ -93,6 +98,39 @@ export async function PUT(req: NextRequest) {
   }
 }
 
+export async function PATCH(req: NextRequest) {
+  const body = await req.json();
+  const technology = TechnologyPutSchema.parse(body);
+  try {
+    await connectMongoDB();
+    const existingTechnology = await Technology.findById(technology._id);
+    if (!existingTechnology)
+      return NextResponse.json(
+        { message: 'Technology not found' },
+        { status: 404 }
+      );
+    existingTechnology.name = technology.name;
+    existingTechnology.description = technology.description;
+    existingTechnology.imageUrl = technology.imageUrl;
+    await existingTechnology.save();
+    return NextResponse.json(
+      { message: 'Technology updated' },
+      { status: 200 }
+    );
+  } catch (error) {
+    if (error instanceof ZodError) {
+      return NextResponse.json(
+        { message: handleError(error, 'Failed to update technology') },
+        { status: 400 }
+      );
+    }
+    return NextResponse.json(
+      { message: handleError(error, 'Failed to update technology') },
+      { status: 500 }
+    );
+  }
+}
+
 export async function DELETE(req: NextRequest) {
   try {
     const { id } = await req.json();
@@ -103,12 +141,6 @@ export async function DELETE(req: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    if (error instanceof ZodError) {
-      return NextResponse.json(
-        { message: handleError(error, 'Failed to delete technology') },
-        { status: 500 }
-      );
-    }
     return NextResponse.json(
       { message: handleError(error, 'Failed to delete technology') },
       { status: 500 }

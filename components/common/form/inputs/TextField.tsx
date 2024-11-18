@@ -6,6 +6,7 @@ interface TextFieldProps {
   id: string;
   label: string;
   type?: string;
+  className?: string;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
@@ -13,10 +14,11 @@ const TextField: React.FC<TextFieldProps> = ({
   id,
   label,
   type = 'text',
+  className,
   ...props
 }) => {
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={id} className="block font-medium">
         {label}
       </label>
