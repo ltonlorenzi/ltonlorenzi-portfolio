@@ -50,4 +50,5 @@ SEMANA:
 -fix del icono Theme
 -implementar el login en admin
 -update technologies and tools (from db)
--loading spinner when sending email..
+-loading spinner when sending email.. (tambien a los submit del admin)
+-agregar una animacion al navbar como la del portfoliop
