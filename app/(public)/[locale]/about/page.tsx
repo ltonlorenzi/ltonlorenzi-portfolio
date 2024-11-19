@@ -16,7 +16,6 @@ const ScrollAnimatedSection = ({
   children: ReactNode;
   ref: React.RefObject<HTMLDivElement>;
 }) => {
-  // const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '0px 0px -50% 0px' });
   return (
     <motion.div
@@ -55,7 +54,7 @@ export default function About() {
 
   return (
     <>
-      <div className="flex flex-grow flex-col items-start gap-16 mb-32 md:px-36">
+      <div className="flex flex-grow flex-col items-start gap-8 md:gap-16 mb-32 md:px-36">
         <AnimatePresence>
           {aboutComponents.map((Component, index) => {
             return (
@@ -66,7 +65,7 @@ export default function About() {
               >
                 <Component />
                 {index < aboutComponents.length - 1 && (
-                  <hr className="w-full border-t border-gray-500 mt-32" />
+                  <hr className="w-full border-t border-gray-500 mt-8 md:mt-32" />
                 )}
               </ScrollAnimatedSection>
             );

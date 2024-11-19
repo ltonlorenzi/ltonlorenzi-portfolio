@@ -3,9 +3,9 @@ import React from 'react';
 
 export const AboutMe = () => {
   return (
-    <div className="flex flex-col gap-4">
-      <h2>About Me</h2>
-      <div className="flex items-center flex-col md:flex-row gap-40 mr-20">
+    <div className="flex flex-col gap-4 px-4 mt-4">
+      <h2 className="md:text-left text-center">About Me</h2>
+      <div className="flex items-center flex-col md:flex-row md:gap-40 gap-6 md:mr-20">
         <p className="mt-4 text-justify">
           I’m Luciano Tonlorenzi, a web developer based in Argentina. Currently
           freelancing as a Full-Stack Developer. I specialize in seamless user

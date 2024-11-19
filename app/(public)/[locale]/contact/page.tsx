@@ -40,8 +40,8 @@ export default function Contact() {
     handleSubmit,
   } = useForm<ContactFormValues>({ resolver: yupResolver(contactMeSchema) });
   return (
-    <div className="flex w-full text-dark-foreground items-center justify-evenly">
-      <div className="w-1/2">
+    <div className="flex w-full text-dark-foreground md:flex-row flex-col gap-4 items-center justify-evenly">
+      <div className="md:w-1/2 w-11/12">
         <h2 className="mb-4">Contact Me</h2>
         <Form
           onSubmit={handleSubmit(handleContactMe)}

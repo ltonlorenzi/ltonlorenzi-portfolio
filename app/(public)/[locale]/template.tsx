@@ -8,7 +8,7 @@ interface TemplateProps {
 
 const Template = ({ children }: TemplateProps) => {
   return (
-    <div className="relative flex flex-grow px-4 md:px-16">
+    <div className="relative flex flex-grow px-1 md:px-16">
       {/* Background circles container */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         <div className="absolute -top-10 -left-72 w-[400px] h-[400px] rounded-full border border-gray-100 border-opacity-10"></div>

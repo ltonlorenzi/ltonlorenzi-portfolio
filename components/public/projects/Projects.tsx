@@ -96,8 +96,8 @@ export function Projects() {
                 <div
                   className={`relative flex-shrink-0 ${
                     p.type === 'mobile'
-                      ? ' w-[180px] h-96'
-                      : 'aspect-square w-96 h-60'
+                      ? 'md:w-[180px] md:h-96'
+                      : 'md:w-96 md:h-60 w-60 h-36'
                   }`}
                 >
                   <Image

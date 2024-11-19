@@ -21,22 +21,22 @@ const Education = () => {
   return (
     <div>
       <section className="flex flex-col gap-4">
-        <h2 className="mt-4">Education</h2>
+        <h2 className="md:text-left text-center mt-4">Education</h2>
 
-        <div className="space-y-4 mt-4">
+        <div className="mt-4">
           {educations.map((education, index) => {
             return (
               <div
                 key={index}
-                className="grid grid-cols-3 gap-4 items-center border-b border-b-gray-600 p-4"
+                className="grid grid-cols-5 gap-4 items-center border-b py-2 text-sm md:text-base border-b-gray-600 md:p-4"
               >
-                <div>
+                <div className="col-span-1">
                   <span className="font-bold">{education.year}</span>
                 </div>
-                <div className="pl-4">
+                <div className="md:pl-4 col-span-2">
                   <span>{education.title}</span>
                 </div>
-                <div className="pl-4">
+                <div className="md:pl-4 col-span-2">
                   <span className="text-gray-500">{education.institution}</span>
                 </div>
               </div>

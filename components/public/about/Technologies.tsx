@@ -19,7 +19,9 @@ import Skill from './Skill';
 export const Technologies = () => {
   return (
     <>
-      <h2 className="mt-4">Technologies and Tools</h2>
+      <h2 className="md:text-left text-center md:mt-4">
+        Technologies and Tools
+      </h2>
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4 justify-center mt-12">
         <Skill icon={<ReactIcon width={40} height={40} />} name="React" />
         <Skill icon={<GitIcon width={40} height={40} />} name="Git" />

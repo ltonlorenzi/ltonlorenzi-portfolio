@@ -39,10 +39,11 @@ bugs:
 -contact me not working
 -fix issues de consola (mas que nada en forms)
 -fix valores por default en el select de projects
+-carousel mobile con scroll de dedo
 
 SEMANA:
 
--terminar crud de career
+-hacer crud de career
 -agregar todos los proyectos (desde el armin)
 -terminar el CV
 -actualizar linkedin con el CV
@@ -51,3 +52,5 @@ SEMANA:
 -subir a un dominio para poder mostrarlo
 -armar cv en plataformas freelance
 -agregar responsive
+-fix del icono Theme
+-implementar el login en admin

@@ -16,13 +16,10 @@ export const getProjectColumns = (
       header: 'ID',
       footer: (props) => props.column.id,
     }),
-    columnHelper.accessor(
-      (row) => row?.translations?.find((t) => t.locale === 'es')?.fields.title,
-      {
-        header: 'Title (es)',
-        footer: 'title',
-      }
-    ),
+    columnHelper.accessor('title', {
+      header: 'Title',
+      footer: (props) => props.column.id,
+    }),
     columnHelper.accessor('description', {
       header: 'Description',
       footer: 'description',
