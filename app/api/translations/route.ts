@@ -1,4 +1,4 @@
-import connectMongoDB from '@/libs/mongodb';
+import connectMongoDB from '@/lib/mongodb';
 import Translation from '@/models/Translation';
 import { Translation as TranslationType } from '@/types/Translation';
 import { NextRequest, NextResponse } from 'next/server';

@@ -8,9 +8,9 @@ import Spinner from '@/components/common/Spinner';
 import Table from '@/components/common/table/Table';
 import { deleteProject, fetchAllProjects } from '@/queries/projects';
 import { fetchTechnologies } from '@/queries/technologies';
-import { Project } from '@/types/Project';
+import { ProjectWTranslations } from '@/types/Project';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Row } from '@tanstack/react-table';
+import { ColumnSort, Row } from '@tanstack/react-table';
 import React, { useRef, useState } from 'react';
 import { IoMdAddCircle } from 'react-icons/io';
 import { toast } from 'react-toastify';
@@ -18,9 +18,16 @@ import { useClickAway } from 'react-use';
 
 import ProjectsForm from './ProjectsForm';
 
+const sorting: ColumnSort[] = [
+  {
+    id: '_id',
+    desc: false,
+  },
+];
+
 export const Projects = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [rowSelected, setRowSelected] = useState<Project>();
+  const [rowSelected, setRowSelected] = useState<ProjectWTranslations>();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const deleteModalRef = useRef(null);
   const modalRef = useRef(null);
@@ -34,7 +41,7 @@ export const Projects = () => {
   useClickAway(modalRef, handleCloseModal);
   useClickAway(deleteModalRef, () => setIsDeleteModalOpen(false));
 
-  const { data: projects, status } = useQuery({
+  const { data: projects, status } = useQuery<ProjectWTranslations[]>({
     queryKey: ['projects'],
     queryFn: () => fetchAllProjects(),
     refetchInterval: 1000 * 60 * 20, // Poll in 20 minutes
@@ -49,12 +56,12 @@ export const Projects = () => {
     queryFn: () => fetchTechnologies(),
   });
 
-  const handleEdit = (row: Row<Project>) => {
+  const handleEdit = (row: Row<ProjectWTranslations>) => {
     setRowSelected(row.original);
     setIsModalOpen(true);
   };
 
-  const handleDeleteModal = (row: Row<Project>) => {
+  const handleDeleteModal = (row: Row<ProjectWTranslations>) => {
     setRowSelected(row.original);
     setIsDeleteModalOpen(true);
   };
@@ -94,6 +101,7 @@ export const Projects = () => {
           handleEdit,
           handleDeleteModal
         )}
+        sorting={sorting}
       />
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} ref={modalRef}>
         <ProjectsForm onClose={handleCloseModal} project={rowSelected} />

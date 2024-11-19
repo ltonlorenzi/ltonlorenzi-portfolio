@@ -4,7 +4,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 const SocialIcons = () => (
   <div className="flex space-x-4">
     <a
-      href="https://www.linkedin.com/in/luciano-gabriel-tonlorenzi-sebastia-773b00110/"
+      href="https://www.linkedin.com/in/ltonlorenzi"
       target="_blank"
       rel="noopener noreferrer"
       className="transition-transform transform hover:scale-110 hover:text-blue-500"

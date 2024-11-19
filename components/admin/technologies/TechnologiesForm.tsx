@@ -1,8 +1,8 @@
 import Form from '@/components/common/form/Form';
 import TextAreaField from '@/components/common/form/inputs/TextAreaField';
 import TextField from '@/components/common/form/inputs/TextField';
+import { handleError } from '@/lib/utils';
 import { addTechnology, editTechnology } from '@/queries/technologies';
-import { handleError } from '@/utils/handleError';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';

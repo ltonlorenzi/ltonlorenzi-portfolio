@@ -6,12 +6,12 @@ import SelectField from '@/components/common/form/inputs/SelectField';
 import TextAreaField from '@/components/common/form/inputs/TextAreaField';
 import TextField from '@/components/common/form/inputs/TextField';
 import Spinner from '@/components/common/Spinner';
+import { projectTypes } from '@/lib/constants';
+import { handleError } from '@/lib/utils';
 import { addProject, editProject } from '@/queries/projects';
 import { fetchTechnologies } from '@/queries/technologies';
-import { Locale } from '@/types/Locale';
+import { Project } from '@/types/Project';
 import { Technology } from '@/types/Technology';
-import { handleError } from '@/utils/handleError';
-import { projectTypes } from '@/utils/projectTypes';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import React from 'react';
@@ -39,31 +39,14 @@ const projectFormSchema = yup.object().shape({
     )
     .required('Numbers array is required'),
   company: yup.string().required('Company is required'),
-  imageUrl: yup.string().optional(),
   type: yup.string().required(),
+  imageUrl: yup.string().optional(),
   projectUrl: yup.string().optional(),
 });
 
-export interface ProjectFormValues {
-  _id?: number;
-  title: string;
-  description: string;
-  start_date: Date;
-  end_date: Date;
-  technologies: number[];
-  translations?: {
-    locale: Locale;
-    fields: { title: string; description: string };
-  }[];
-  company: string;
-  imageUrl?: string;
-  type: string;
-  projectUrl?: string;
-}
-
 interface ProjectsFormProps {
   onClose: () => void;
-  project?: ProjectFormValues;
+  project?: Project;
 }
 
 const ProjectsForm = ({ onClose, project }: ProjectsFormProps) => {
@@ -83,12 +66,12 @@ const ProjectsForm = ({ onClose, project }: ProjectsFormProps) => {
     register,
     formState: { errors },
     control,
-  } = useForm<ProjectFormValues>({
+  } = useForm<Project>({
     resolver: yupResolver(projectFormSchema),
     defaultValues: project,
   });
 
-  const onSubmit = async (formData: ProjectFormValues) => {
+  const onSubmit = async (formData: Project) => {
     const sanitizedData = sanitizeProject(formData);
     try {
       const res = project
@@ -98,7 +81,7 @@ const ProjectsForm = ({ onClose, project }: ProjectsFormProps) => {
       toast.success(res.message);
     } catch (error) {
       console.error(error);
-      toast.error(handleError(error, 'Error adding technology'));
+      toast.error(handleError(error, 'Error adding project'));
     } finally {
       onClose();
     }
@@ -160,7 +143,6 @@ const ProjectsForm = ({ onClose, project }: ProjectsFormProps) => {
           isMulti={true}
           {...register('technologies')}
         />
-
         <DateField
           className="col-span-2"
           label="Start date"

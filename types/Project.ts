@@ -1,4 +1,4 @@
-import { Locale } from './Locale';
+import { Locale } from '@/lib/types';
 
 export interface Project {
   _id?: number;
@@ -7,12 +7,15 @@ export interface Project {
   start_date: Date;
   end_date: Date;
   technologies: number[];
-  translations?: {
-    locale: Locale;
-    fields: { description: string; title: string };
-  }[];
   company: string;
   imageUrl?: string;
   type: string;
   projectUrl?: string;
+}
+
+export interface ProjectWTranslations extends Project {
+  translations: {
+    locale: Locale;
+    fields: { description: string; title: string };
+  }[];
 }

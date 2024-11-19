@@ -1,6 +1,6 @@
 import { Projects as ProjectsComponent } from '@/components/public/projects/Projects';
+import { Locale } from '@/lib/types';
 import { fetchProjects } from '@/queries/projects';
-import { Locale } from '@/types/Locale';
 import {
   dehydrate,
   HydrationBoundary,

@@ -44,13 +44,10 @@ bugs:
 SEMANA:
 
 -hacer crud de career
--agregar todos los proyectos (desde el armin)
--terminar el CV
--actualizar linkedin con el CV
 -fix scroll paginas proyectos
 -ver por que esta tan lento
--subir a un dominio para poder mostrarlo
--armar cv en plataformas freelance
--agregar responsive
+-terminar de aplicar en upwork
 -fix del icono Theme
 -implementar el login en admin
+-update technologies and tools (from db)
+-loading spinner when sending email..

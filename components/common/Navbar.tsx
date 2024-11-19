@@ -1,7 +1,7 @@
 'use client';
 import { useLocale } from '@/context/LocaleContext';
-import { localizedLink } from '@/utils/linkHelper';
-import { routes } from '@/utils/routes';
+import { routes } from '@/lib/constants';
+import { localizedLink } from '@/lib/utils';
 import Link from 'next/link';
 import React from 'react';
 import { useTranslation } from 'react-i18next';

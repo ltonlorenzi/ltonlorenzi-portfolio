@@ -1,5 +1,5 @@
 import { ContactFormValues } from '@/app/(public)/[locale]/contact/page';
-import { handleError } from '@/utils/handleError';
+import { handleError } from '@/lib/utils';
 import axios from 'axios';
 
 export const sendEmail = async (data: ContactFormValues) => {

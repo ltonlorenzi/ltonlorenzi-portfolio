@@ -1,15 +1,15 @@
 import TableActions from '@/components/common/table/TableActions'; // Make sure this import is correct
-import { Project } from '@/types/Project';
+import { ProjectWTranslations } from '@/types/Project';
 import { Technology } from '@/types/Technology';
 import { createColumnHelper, Row } from '@tanstack/react-table';
 import moment from 'moment';
 
-const columnHelper = createColumnHelper<Project>();
+const columnHelper = createColumnHelper<ProjectWTranslations>();
 
 export const getProjectColumns = (
   technologies: Technology[],
-  handleEdit: (row: Row<Project>) => void,
-  handleDeleteModal: (row: Row<Project>) => void
+  handleEdit: (row: Row<ProjectWTranslations>) => void,
+  handleDeleteModal: (row: Row<ProjectWTranslations>) => void
 ) => {
   return [
     columnHelper.accessor('_id', {

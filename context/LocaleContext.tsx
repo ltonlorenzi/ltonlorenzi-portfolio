@@ -1,5 +1,5 @@
 'use client';
-import { Locale } from '@/types/Locale';
+import { Locale } from '@/lib/types';
 import React, { createContext, useContext, ReactNode } from 'react';
 
 interface LocaleContextProps {

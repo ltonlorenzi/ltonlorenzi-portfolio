@@ -1,5 +1,11 @@
 import { AxiosError } from 'axios';
 
+import { Locale } from './types';
+
+export const localizedLink = (path: string, locale: Locale): string => {
+  return `/${locale}${path}`;
+};
+
 export const handleError = (
   error: unknown,
   customMessage = 'An error occurred'

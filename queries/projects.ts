@@ -1,6 +1,6 @@
-import { Locale } from '@/types/Locale';
+import { Locale } from '@/lib/types';
+import { handleError } from '@/lib/utils';
 import { Project } from '@/types/Project';
-import { handleError } from '@/utils/handleError';
 import axios from 'axios';
 
 export const fetchProjects = async (locale: Locale) => {

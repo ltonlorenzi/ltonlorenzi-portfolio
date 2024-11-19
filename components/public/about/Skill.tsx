@@ -1,13 +1,13 @@
-import React, { ReactNode } from 'react';
+import Image from 'next/image';
 
 interface SkillProps {
-  icon: ReactNode; // Define the icon as a ReactNode
+  imageUrl: string;
   name: string;
 }
 
-const Skill = ({ icon, name }: SkillProps) => (
+const Skill = ({ imageUrl, name }: SkillProps) => (
   <div className="flex flex-row md:flex-col gap-4 md:gap-0 items-center justify-start md:justify-center border p-2 text-black rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white w-full">
-    <div>{icon}</div>
+    <Image width={32} height={32} src={imageUrl} alt="icon" className="h-8" />
     <span className="font-semibold text-center">{name}</span>
   </div>
 );

@@ -4,7 +4,7 @@ import { Header } from '@/components/common/Header';
 import { LocaleProvider } from '@/context/LocaleContext';
 import ReactQueryProvider from '@/context/ReactQueryProvider';
 import TranslationsProvider from '@/context/TranslationsProvider';
-import { Locale } from '@/types/Locale';
+import { Locale } from '@/lib/types';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import '@/app/globals.css';

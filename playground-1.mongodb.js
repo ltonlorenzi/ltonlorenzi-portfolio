@@ -235,13 +235,19 @@ use('test');
 //   },
 // ]);
 
-db.getCollection('projects').updateOne(
-  { _id: 3 },
-  {
-    $set: {
-      projectUrl: undefined,
-      description:
-        "At ETERNAL, I built a website to help scientists administrate their experiments easily. The platform let them capture images using a microscope, analyze them, add experiments, organize projects, and view data in charts (chartjs). I handled the whole project and worked directly with the client. I've also developed an API with Firebase Cloud Functions and GCP and a real-time video streaming system using a combination of express, OpenCV, Firebase, and WebSockets.",
-    },
-  }
-);
+// db.getCollection('projects').updateOne(
+//   { _id: 3 },
+//   {
+//     $set: {
+//       projectUrl: undefined,
+//       description:
+//         "At ETERNAL, I built a website to help scientists administrate their experiments easily. The platform let them capture images using a microscope, analyze them, add experiments, organize projects, and view data in charts (chartjs). I handled the whole project and worked directly with the client. I've also developed an API with Firebase Cloud Functions and GCP and a real-time video streaming system using a combination of express, OpenCV, Firebase, and WebSockets.",
+//     },
+//   }
+// );
+
+// db.createCollection('jobs');
+
+// db.getCollection('jobs').updateMany({}, { $unset: { companyId: '' } });
+
+db.getCollection('jobs').find({ _id: 'asd' });

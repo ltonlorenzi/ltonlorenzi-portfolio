@@ -4,6 +4,7 @@ import { Carousel } from '@/components/common/Carousel';
 import ErrorMessage from '@/components/common/ErrorMessage';
 import Spinner from '@/components/common/Spinner';
 import { useLocale } from '@/context/LocaleContext';
+import { defaultTechPath } from '@/lib/constants';
 import { fetchProjects } from '@/queries/projects';
 import { fetchTechnologies } from '@/queries/technologies';
 // import { projectsToDb } from '@/todatabase/projects';
@@ -50,7 +51,7 @@ export function Projects() {
         {projects.map((p: Project) => (
           <div
             key={p._id}
-            className="flex gap-8 p-2 max-w-4xl items-center flex-col md:flex-row"
+            className="flex gap-8 p-2 max-w-4xl items-center flex-col md:flex-row overflow-hidden"
           >
             <div className="flex-grow">
               <div className="flex flex-col gap-2">
@@ -75,9 +76,7 @@ export function Projects() {
                       >
                         <Image
                           alt={t?.name || 'tool'}
-                          src={
-                            t?.imageUrl || '/images/technologies/default.svg'
-                          }
+                          src={t?.imageUrl || defaultTechPath}
                           className="rounded-md" // Using tailwindcss
                           width={30}
                           height={30}

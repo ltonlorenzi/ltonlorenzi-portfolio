@@ -1,4 +1,4 @@
-import { Locale } from './Locale';
+import { Locale } from '@/lib/types';
 
 export interface Translation {
   _id?: number;

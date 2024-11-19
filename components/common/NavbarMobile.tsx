@@ -1,7 +1,7 @@
 'use client';
 import { useLocale } from '@/context/LocaleContext';
-import { localizedLink } from '@/utils/linkHelper';
-import { routes } from '@/utils/routes';
+import { routes } from '@/lib/constants';
+import { localizedLink } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';

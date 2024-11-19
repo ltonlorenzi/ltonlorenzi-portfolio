@@ -1,7 +1,8 @@
 'use client';
 import { useLocale } from '@/context/LocaleContext';
-import { localizedLink } from '@/utils/linkHelper';
-import { routes } from '@/utils/routes';
+import { userName } from '@/lib/constants';
+import { routes } from '@/lib/constants';
+import { localizedLink } from '@/lib/utils';
 import Link from 'next/link';
 import React from 'react';
 
@@ -10,11 +11,7 @@ const HeaderName = () => {
 
   return (
     <Link href={localizedLink(routes[0], locale)} className="mr-auto md:mr-0">
-      <h3 className="break-words whitespace-pre-wrap">
-        Luciano
-        <br />
-        Tonlorenzi
-      </h3>
+      <h3 className="w-3">{userName}</h3>
     </Link>
   );
 };

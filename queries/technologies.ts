@@ -1,5 +1,5 @@
+import { handleError } from '@/lib/utils';
 import { Technology } from '@/types/Technology';
-import { handleError } from '@/utils/handleError';
 import axios from 'axios';
 
 export const fetchTechnologies = async () => {

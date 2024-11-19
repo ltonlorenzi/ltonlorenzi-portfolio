@@ -1,6 +1,6 @@
-import connectMongoDB from '@/libs/mongodb';
+import connectMongoDB from '@/lib/mongodb';
+import { handleError } from '@/lib/utils';
 import Technology from '@/models/Technology';
-import { handleError } from '@/utils/handleError';
 import { NextRequest, NextResponse } from 'next/server';
 import { z, ZodError } from 'zod';
 

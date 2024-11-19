@@ -34,7 +34,7 @@ export const Carousel = ({ children }: CarouselProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full relative h-full overflow-hidden">
+    <div className="flex flex-col items-center w-full relative h-full">
       <div className="flex md:gap-8 justify-center items-center overflow-hidden">
         <button
           onClick={handleClickPrevious}
@@ -42,7 +42,7 @@ export const Carousel = ({ children }: CarouselProps) => {
         >
           <MdOutlineKeyboardDoubleArrowLeft size={30} />
         </button>
-        <div className="w-full overflow-hidden">
+        <div className="w-full overflow-hidden max-h-[500px]">
           <AnimatePresence>
             <motion.div
               key={currentIndex}
@@ -52,9 +52,8 @@ export const Carousel = ({ children }: CarouselProps) => {
               }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, type: 'keyframes' }}
-              className="shadow-lg rounded-lg overflow-hidden"
             >
-              {children[currentIndex]}
+              {children[currentIndex]}{' '}
             </motion.div>
           </AnimatePresence>
         </div>

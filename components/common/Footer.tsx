@@ -1,4 +1,5 @@
 'use client';
+import { userName } from '@/lib/constants';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -21,7 +22,7 @@ export const Footer = () => {
   return (
     <div className="p-6 w-full">
       <div className="text-xs text-center">
-        Made by Luciano Tonlorenzi
+        Made by {userName}
         <span className="cursor-pointer" onClick={handleClick}>
           &copy;
         </span>

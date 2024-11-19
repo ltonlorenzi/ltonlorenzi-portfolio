@@ -1,9 +1,22 @@
+'use client';
+import ErrorMessage from '@/components/common/ErrorMessage';
+import Spinner from '@/components/common/Spinner';
 import { TimelineCard } from '@/components/public/career/TimelineCard';
-import { jobs } from '@/todatabase/jobs';
+import { getJobs } from '@/queries/jobs';
+import { Job } from '@/types/Job';
+import { useQuery } from '@tanstack/react-query';
 import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 
 const Career = () => {
+  const { data: jobs, status } = useQuery<Job[]>({
+    queryKey: ['jobs'],
+    queryFn: () => getJobs(),
+  });
+
+  if (status === 'pending') return <Spinner />;
+  if (status === 'error') return <ErrorMessage />;
+
   return (
     <div className="relative w-full flex flex-col items-center overflow-hidden">
       <div className="invisible md:visible absolute w-1 bg-gray-300 h-full left-1/2 transform -translate-x-1/2 my-12"></div>

@@ -1,5 +1,6 @@
-import { handleError } from '@/utils/handleError';
 import mongoose from 'mongoose';
+
+import { handleError } from './utils';
 
 const connectMongoDB = async () => {
   const uri = process.env.MONGODB_URI;
