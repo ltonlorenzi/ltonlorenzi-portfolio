@@ -42,7 +42,7 @@ export const Carousel = ({ children }: CarouselProps) => {
         >
           <MdOutlineKeyboardDoubleArrowLeft size={30} />
         </button>
-        <div className="w-full overflow-hidden max-h-[500px]">
+        <div className="w-full overflow-hidden">
           <AnimatePresence>
             <motion.div
               key={currentIndex}

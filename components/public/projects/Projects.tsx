@@ -51,7 +51,7 @@ export function Projects() {
         {projects.map((p: Project) => (
           <div
             key={p._id}
-            className="flex gap-8 p-2 max-w-4xl items-center flex-col md:flex-row overflow-hidden"
+            className="flex gap-8 p-2 max-w-4xl items-center flex-col lg:flex-row overflow-hidden"
           >
             <div className="flex-grow">
               <div className="flex flex-col gap-2">

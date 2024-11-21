@@ -31,7 +31,9 @@ GENERAL:
 -agregar validaciones ZOD en la API
 -crud de translations
 -crear el form de tranlations en projects
--expand projects image on hover to the center (estaria bueno que se agrande, se centre y que se habilite un carousel con mas imagenes)
+-expand projects image on hover to the center (estaria bueno que se agrande, se centre y
+que se habilite un carousel con mas imagenes) -- ver intercepting routes en react
+-intercepting routes: ver si se puede aplicar a los modals
 
 bugs:
 -fix scroll en pagina de proyectos
@@ -40,13 +42,14 @@ bugs:
 -fix issues de consola (mas que nada en forms)
 -fix valores por default en el select de projects
 -carousel mobile con scroll de dedo
+-agregar los comp del navbar a la url
+-rich text en el career
+-probar bien el crud de career
+-fix projects scroll
 
 SEMANA:
 
--hacer crud de career
--fix scroll paginas proyectos
 -ver por que esta tan lento
--terminar de aplicar en upwork
 -fix del icono Theme
 -implementar el login en admin
 -update technologies and tools (from db)
